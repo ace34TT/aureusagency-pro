@@ -18,6 +18,9 @@ import { getServerSideURL } from './utilities/getURL'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+
+console.log('MA DATABASE URI EST :', process.env.DATABASE_URI)
+
 export default buildConfig({
   admin: {
     components: {
