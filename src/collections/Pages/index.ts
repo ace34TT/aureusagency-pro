@@ -8,6 +8,11 @@ import { CallToAction } from '@/blocks/CallToAction/config'
 import { Content } from '@/blocks/Content/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { WorkShowcase } from '@/blocks/WorkShowCase/config'
+import { Services } from '@/blocks/Services/config'
+import { MarqueeBlock } from '@/blocks/Marquee/config'
+import { BlogList } from '@/blocks/BlogList/config'
+import { AchievementList } from '@/blocks/AchievementList/config'
 import { hero } from '@/heros/config'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -20,11 +25,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { WorkShowcase } from '@/blocks/WorkShowCase/config'
-import { Services } from '@/blocks/Services/config'
-import { MarqueeBlock } from '@/blocks/Marquee/config'
-import { BlogList } from '@/blocks/BlogList/config'
-import { AchievementList } from '@/blocks/AchievementList/config'
+
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',

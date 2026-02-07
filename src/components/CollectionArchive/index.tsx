@@ -22,7 +22,6 @@ export const CollectionArchive: React.FC<Props> = (props) => {
                 </div>
               )
             }
-
             return null
           })}
         </div>
