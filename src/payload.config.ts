@@ -14,15 +14,22 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { Global } from '@/Global/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-
-console.log('MA DATABASE URI EST :', process.env.DATABASE_URI)
-
 export default buildConfig({
   admin: {
+    meta: {
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          url: '/favicon.ico',
+        },
+      ],
+    },
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
@@ -65,7 +72,7 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, Global],
   plugins,
   secret: process.env.PAYLOAD_SECRET,
   sharp,

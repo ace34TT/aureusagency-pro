@@ -112,10 +112,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    global: Global;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    global: GlobalSelect<false> | GlobalSelect<true>;
   };
   locale: null;
   user: User;
@@ -1691,6 +1693,10 @@ export interface Header {
  */
 export interface Footer {
   id: string;
+  /**
+   * Logo de l’agence (format SVG ou PNG recommandé)
+   */
+  logo: string | Media;
   navItems?:
     | {
         link: {
@@ -1708,6 +1714,47 @@ export interface Footer {
           url?: string | null;
           label: string;
         };
+        id?: string | null;
+      }[]
+    | null;
+  legalLinks?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "global".
+ */
+export interface Global {
+  id: string;
+  contact: {
+    email: string;
+    phone?: string | null;
+    address?: string | null;
+  };
+  socialLinks?:
+    | {
+        platform: 'facebook' | 'linkedin' | 'instagram' | 'whatsapp';
+        url: string;
         id?: string | null;
       }[]
     | null;
@@ -1758,6 +1805,7 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  logo?: T;
   navItems?:
     | T
     | {
@@ -1770,6 +1818,43 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  legalLinks?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "global_select".
+ */
+export interface GlobalSelect<T extends boolean = true> {
+  contact?:
+    | T
+    | {
+        email?: T;
+        phone?: T;
+        address?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
         id?: T;
       };
   updatedAt?: T;
