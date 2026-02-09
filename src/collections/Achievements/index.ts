@@ -6,7 +6,7 @@ import { Banner } from '@/blocks/Banner/config'
 import { Code } from '@/blocks/Code/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
-import { populateAuthors } from '../Posts/hooks/populateAuthors' // Reusing hook from Posts
+import { populateAuthors } from '../Posts/hooks/populateAuthors'
 import { revalidateDelete, revalidateAchievement } from './hooks/revalidateAchievement'
 
 import {
