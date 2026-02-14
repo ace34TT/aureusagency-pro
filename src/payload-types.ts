@@ -447,7 +447,7 @@ export interface MarqueeBlock {
         id?: string | null;
       }[]
     | null;
-  speed?: number | null;
+  padding?: ('top' | 'bottom' | 'both') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'marquee';
@@ -1519,7 +1519,7 @@ export interface MarqueeBlockSelect<T extends boolean = true> {
         name?: T;
         id?: T;
       };
-  speed?: T;
+  padding?: T;
   id?: T;
   blockName?: T;
 }

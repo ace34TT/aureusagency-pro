@@ -56,7 +56,7 @@ export const BlogList = async (
   })
 
   return (
-    <section className="relative px-6 pb-24 overflow-hidden bg-white">
+    <section className="relative px-6 py-24 overflow-hidden bg-white">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -111,7 +111,6 @@ export const BlogList = async (
             posts.docs.map((post) => {
               const { slug, title, meta, publishedAt, tags } = post
               const href = `/posts/${slug}`
-
               return (
                 <Link href={href} key={post.id} className="group block h-full">
                   <article className="flex flex-col h-full bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">

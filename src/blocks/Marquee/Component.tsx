@@ -19,13 +19,11 @@ export const Marquee: React.FC<Partial<MarqueeBlockProps>> = (props) => {
   ]
 
   const dataToUse = items && items.length > 0 ? items : fallbackExpertise
-
-  // Determine items to map. If we have only a few items, we need to duplicate them enough to fill the screen
-  // FastMarquee usually handles this but duplication helps smoothness
+  
   const content = [...dataToUse, ...dataToUse]
 
   return (
-    <section className="relative py-24 overflow-hidden bg-white">
+    <section className="relative pb-24 overflow-hidden bg-white">
       <div
         className="relative w-full"
         style={{

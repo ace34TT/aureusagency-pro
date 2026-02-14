@@ -18,10 +18,18 @@ export const MarqueeBlock: Block = {
       ],
     },
     {
-      name: 'speed',
-      type: 'number',
-      defaultValue: 50,
-      label: 'Vitesse de défilement',
+      name: 'padding',
+      type: 'radio',
+      label: 'Espacement (Padding)',
+      defaultValue: 'both',
+      options: [
+        { label: 'Haut', value: 'top' },
+        { label: 'Bas', value: 'bottom' },
+        { label: 'Les deux', value: 'both' },
+      ],
+      admin: {
+        layout: 'horizontal',
+      },
     },
   ],
 }
