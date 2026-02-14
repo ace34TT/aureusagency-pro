@@ -1,0 +1,52 @@
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-marcellus), serif;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+
+  h1 {
+    font-size: 3rem; /* 48px */
+  }
+
+  h2 {
+    font-size: 2.25rem; /* 36px */
+  }
+
+  h3 {
+    font-size: 1.875rem; /* 30px */
+  }
+
+  h4 {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  p {
+    font-family: var(--font-sans), sans-serif;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+    margin-bottom: 1em;
+  }
+
+  /* Specific override for Rich Text containers */
+  .payload-richtext h1 {
+    font-size: 3rem;
+  }
+  .payload-richtext h2 {
+    font-size: 2.25rem;
+    margin-top: 1em;
+  }
+  .payload-richtext h3 {
+    font-size: 1.875rem;
+    margin-top: 1em;
+  }
+  .payload-richtext p {
+    margin-bottom: 1em;
+  }
+}

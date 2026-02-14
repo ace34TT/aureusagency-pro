@@ -27,9 +27,10 @@ const Services = ({ tagline, richHeadline, richDescription, services }: ServiceP
             <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>
               {tagline || 'Services'}
             </p>
-
-            <div className="mt-4 text-3xl font-(--font-marcellus) text-[#0F172A] md:text-4xl">
-              {richHeadline && <RichText data={richHeadline} enableGutter={false} />}
+            <div className="mt-4 text-3xl font-(--font-marcellus) md:text-4xl">
+              {richHeadline && (
+                <RichText data={richHeadline} className={'text-[#0F172A]'} enableGutter={false} />
+              )}
             </div>
             <div className={`mt-4 text-base ${theme.inkMuted}`}>
               {richDescription && <RichText data={richDescription} enableGutter={false} />}
@@ -49,7 +50,7 @@ const Services = ({ tagline, richHeadline, richDescription, services }: ServiceP
                 key={item.id || index}
                 className="flex items-start gap-6 rounded-3xl border border-[#0F172A]/10 bg-white/80 p-6 shadow-[0_16px_50px_rgba(15,23,42,0.08)]"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-lg font-bold font-(--font-marcellus) text-primary">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-lg font-(--font-marcellus) text-primary">
                   {(index + 1).toString().padStart(2, '0')}
                 </div>
                 <div>

@@ -6,18 +6,8 @@
 @config '../../../tailwind.config.mjs';
 
 @custom-variant dark (&:is([data-theme='dark'] *));
-@custom-variant sm (@media (width >= theme(--breakpoint-sm)));
-@custom-variant md (@media (width >= theme(--breakpoint-md)));
-@custom-variant lg (@media (width >= theme(--breakpoint-lg)));
-@custom-variant xl (@media (width >= theme(--breakpoint-xl)));
-@custom-variant 2xl (@media (width >= theme(--breakpoint-2xl)));
 
 @layer base {
-  /*h1, h2, h3, h4, h5, h6 {*/
-  /*  @apply font-bold tracking-tight;*/
-  /*  font-weight: unset;*/
-  /*  font-size: unset;*/
-  /*}*/
 }
 
 @plugin "@tailwindcss/typography";
@@ -51,7 +41,6 @@
   --popover: oklch(100% 0 0deg);
   --popover-foreground: oklch(12% 0.01 250deg);
 
-  /* Aureus Gold - Ton identité de vente */
   --primary: oklch(59.73% 0.224 279.77deg);
   --primary-foreground: oklch(100% 0 0deg);
 
@@ -135,10 +124,6 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-orange-300;
   }
-}
-
-html {
-  opacity: 0;
 }
 
 html[data-theme='dark'],

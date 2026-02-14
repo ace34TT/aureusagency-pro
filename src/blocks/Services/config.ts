@@ -1,4 +1,5 @@
 import type { Block } from 'payload'
+import { HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 
 export const Services: Block = {
   slug: 'services',
@@ -9,14 +10,26 @@ export const Services: Block = {
       type: 'text',
     },
     {
-      name: 'richHeadline', // Renamed from headline
+      name: 'richHeadline',
       type: 'richText',
       label: 'Headline',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3'] }),
+        ],
+      }),
     },
     {
-      name: 'richDescription', // Renamed from description
+      name: 'richDescription',
       type: 'richText',
       label: 'Description',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3'] }),
+        ],
+      }),
     },
     {
       name: 'services',
