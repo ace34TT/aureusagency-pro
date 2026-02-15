@@ -23,9 +23,9 @@ export const MarqueeBlock: Block = {
       label: 'Espacement (Padding)',
       defaultValue: 'both',
       options: [
-        { label: 'Haut', value: 'top' },
-        { label: 'Bas', value: 'bottom' },
-        { label: 'Les deux', value: 'both' },
+        { label: 'top', value: 'top' },
+        { label: 'bottom', value: 'bottom' },
+        { label: 'Both', value: 'both' },
       ],
       admin: {
         layout: 'horizontal',
