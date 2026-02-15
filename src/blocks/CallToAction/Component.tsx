@@ -19,7 +19,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({
 
   return (
     <Gutter>
-      <div className="relative isolate overflow-hidden  bg-primary/10 px-6 py-24 my-24">
+      <div className="relative isolate overflow-hidden  bg-primary/10 py-24 my-24">
         {media && (
           <div className="absolute inset-0 -z-10 h-full w-full">
             <MediaComponent
