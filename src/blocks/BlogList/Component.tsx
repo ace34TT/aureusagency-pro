@@ -56,8 +56,8 @@ export const BlogList = async (
   })
 
   return (
-    <section className="relative px-6 py-24 overflow-hidden bg-white">
-      {/* Background Decor */}
+    <section className="relative px-6 py-24 overflow-hidden">
+      {/* Background Decor matching WorkShowcase */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
         <div className="absolute bottom-[20%] left-[5%] h-125 w-125 rounded-full bg-blue-50/40 blur-[120px]" />
@@ -66,10 +66,14 @@ export const BlogList = async (
       <div className="relative mx-auto container z-10">
         {/* Header */}
         <div className="mb-16 max-w-2xl">
-          <div className="text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight mb-6">
+          <div className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft} mb-4`}>
+            {/* Optional Tagline if we had one, or just static 'Blog' */}
+            BLOG
+          </div>
+          <div className="text-3xl font-(--font-marcellus) text-[#0F172A] md:text-4xl mb-6">
             {title && <RichText data={title} enableGutter={false} />}
           </div>
-          <div className={`text-lg ${theme.inkMuted}`}>
+          <div className={`text-base ${theme.inkMuted}`}>
             {description && <RichText data={description} enableGutter={false} />}
           </div>
         </div>
@@ -80,10 +84,10 @@ export const BlogList = async (
             <Link
               href="?"
               scroll={false}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all border ${
                 !activeTagSlug
-                  ? 'bg-primary text-white shadow-md'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  ? 'bg-[#0F172A] text-white border-[#0F172A]'
+                  : 'bg-transparent text-[#0F172A]/60 border-[#0F172A]/10 hover:border-[#0F172A]/30'
               }`}
             >
               Tous
@@ -93,10 +97,10 @@ export const BlogList = async (
                 key={tag.id}
                 href={`?tag=${tag.slug}`}
                 scroll={false}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all border ${
                   activeTagSlug === tag.slug
-                    ? 'bg-primary text-white shadow-md'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-[#0F172A] text-white border-[#0F172A]'
+                    : 'bg-transparent text-[#0F172A]/60 border-[#0F172A]/10 hover:border-[#0F172A]/30'
                 }`}
               >
                 {tag.name}
@@ -106,50 +110,62 @@ export const BlogList = async (
         )}
 
         {/* Grid */}
-        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.docs.length > 0 ? (
             posts.docs.map((post) => {
               const { slug, title, meta, publishedAt, tags } = post
               const href = `/posts/${slug}`
               return (
                 <Link href={href} key={post.id} className="group block h-full">
-                  <article className="flex flex-col h-full bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    {/* Image */}
-                    <div className="relative aspect-16/10 overflow-hidden bg-slate-100">
-                      {meta?.image && typeof meta.image !== 'string' && (
-                        <Media
-                          resource={meta.image}
-                          imgClassName="w-full h-full object-cover"
-                          pictureClassName="w-full h-full block"
-                          htmlElement={null}
-                        />
-                      )}
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-col flex-1 p-8">
-                      {/* Date & Tags */}
-                      <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500 mb-4 uppercase tracking-wider">
-                        {publishedAt && (
-                          <time dateTime={publishedAt} className="shrink-0">
-                            {new Date(publishedAt).toLocaleDateString('fr-FR', {
-                              day: 'numeric',
-                              month: 'long',
-                              year: 'numeric',
-                            })}
-                          </time>
+                  <article className="flex flex-col h-full rounded-[28px] border border-[#0F172A]/10 bg-white/80 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.1)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
+                    {/* Decorative light blob on hover */}
+                    <div className="absolute -right-10 top-0 h-24 w-24 rounded-full bg-[#9AD5CA]/30 blur-2xl transition opacity-0 group-hover:opacity-100" />
+                    <div className="relative z-10 flex flex-col h-full">
+                      {/* Image */}
+                      <div className="relative aspect-16/10 overflow-hidden rounded-xl bg-slate-100 mb-6">
+                        {meta?.image && typeof meta.image !== 'string' && (
+                          <Media
+                            resource={meta.image}
+                            imgClassName="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            pictureClassName="w-full h-full block"
+                            htmlElement={null}
+                          />
                         )}
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex flex-col flex-1">
+                        {/* Date & Tags */}
+                        <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-[#0F172A]/60 mb-3">
+                          {publishedAt && (
+                            <time dateTime={publishedAt} className="shrink-0">
+                              {new Date(publishedAt).toLocaleDateString('fr-FR', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                              })}
+                            </time>
+                          )}
+                        </div>
+
+                        <h3 className="text-xl font-(--font-marcellus) text-[#0F172A] mb-3 leading-tight group-hover:text-primary transition-colors">
+                          {title}
+                        </h3>
+
+                        <p className={`line-clamp-3 mb-6 flex-1 text-sm ${theme.inkMuted}`}>
+                          {meta?.description}
+                        </p>
 
                         {tags && Array.isArray(tags) && tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2">
+                          <div className="mt-auto flex flex-wrap gap-2 pt-4 border-t border-[#0F172A]/5">
                             {tags.map((tag) => {
                               if (typeof tag === 'object' && tag !== null && 'name' in tag) {
                                 return (
                                   <span
                                     key={tag.id}
-                                    className="bg-primary/5 text-primary px-2 py-1 rounded-md text-[10px] font-bold"
+                                    className="text-[10px] uppercase tracking-wider text-[#0F172A]/40 font-medium"
                                   >
-                                    {tag.name}
+                                    #{tag.name}
                                   </span>
                                 )
                               }
@@ -157,21 +173,6 @@ export const BlogList = async (
                             })}
                           </div>
                         )}
-                      </div>
-
-                      <h3 className="text-xl font-bold text-[#0F172A] mb-3 leading-snug group-hover:text-primary transition-colors">
-                        {title}
-                      </h3>
-
-                      <p className="text-slate-600 line-clamp-3 mb-6 flex-1 text-sm leading-relaxed">
-                        {meta?.description}
-                      </p>
-
-                      <div className="flex items-center gap-3 pt-6 border-t border-slate-100 mt-auto">
-                        <div className="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">
-                          Lire l&apos;article
-                        </div>
-                        <div className="w-8 h-px bg-primary/50 group-hover:w-12 transition-all" />
                       </div>
                     </div>
                   </article>
