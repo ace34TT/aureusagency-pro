@@ -215,6 +215,7 @@ export interface Page {
     | WorkShowcaseBlock
     | BlogListBlock
     | AchievementListBlock
+    | SplitSectionBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1036,6 +1037,57 @@ export interface AchievementListBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SplitSectionBlock".
+ */
+export interface SplitSectionBlock {
+  reverse?: boolean | null;
+  image: string | Media;
+  title: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'splitSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "achievements".
  */
 export interface Achievement {
@@ -1392,6 +1444,7 @@ export interface PagesSelect<T extends boolean = true> {
         workShowcase?: T | WorkShowcaseBlockSelect<T>;
         blogList?: T | BlogListBlockSelect<T>;
         achievementList?: T | AchievementListBlockSelect<T>;
+        splitSection?: T | SplitSectionBlockSelect<T>;
       };
   meta?:
     | T
@@ -1566,6 +1619,33 @@ export interface AchievementListBlockSelect<T extends boolean = true> {
   description?: T;
   mode?: T;
   limit?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SplitSectionBlock_select".
+ */
+export interface SplitSectionBlockSelect<T extends boolean = true> {
+  reverse?: T;
+  image?: T;
+  title?: T;
+  content?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

@@ -14,6 +14,7 @@ import { Process } from '@/blocks/Process/config'
 import Testimonials from '@/blocks/Testimonials/Component'
 import BlogList from '@/blocks/BlogList/Component'
 import AchievementList from '@/blocks/AchievementList/Component'
+import { SplitSection } from '@/blocks/SplitSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -28,6 +29,7 @@ const blockComponents = {
   testimonials: Testimonials,
   blogList: BlogList,
   achievementList: AchievementList,
+  splitSection: SplitSection,
 }
 
 export const RenderBlocks: React.FC<{

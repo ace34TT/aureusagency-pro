@@ -13,6 +13,7 @@ import { Services } from '@/blocks/Services/config'
 import { MarqueeBlock } from '@/blocks/Marquee/config'
 import { BlogList } from '@/blocks/BlogList/config'
 import { AchievementList } from '@/blocks/AchievementList/config'
+import { SplitSection } from '@/blocks/SplitSection/config'
 import { hero } from '@/heros/config'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -25,7 +26,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -89,6 +89,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 WorkShowcase,
                 BlogList,
                 AchievementList,
+                SplitSection,
               ],
               required: true,
               admin: {

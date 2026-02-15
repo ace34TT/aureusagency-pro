@@ -19,7 +19,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({
 
   return (
     <Gutter>
-      <div className="relative isolate overflow-hidden  bg-gray-900 px-6 py-24 shadow-2xl sm:px-24 xl:py-32">
+      <div className="relative isolate overflow-hidden  bg-primary/10 px-6 py-24 my-24">
         {media && (
           <div className="absolute inset-0 -z-10 h-full w-full">
             <MediaComponent
@@ -35,7 +35,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({
           {richText && (
             <RichText
               data={richText}
-              className="text-white [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-white [&_h2]:sm:text-4xl"
+              className="text-primary [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-primary [&_h2]:sm:text-4xl"
             />
           )}
           <div className="mt-10 flex items-center justify-center gap-x-6">
