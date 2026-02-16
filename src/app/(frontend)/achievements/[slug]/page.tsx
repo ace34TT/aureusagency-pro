@@ -11,6 +11,8 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { AchievementHero } from '@/heros/AchievementHero'
+import { RelatedAchievements } from '@/blocks/RelatedAchievements/Component'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -55,17 +57,17 @@ export default async function Achievement({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      {/*<AchievementHero achievement={achievement} />*/}
+      <AchievementHero achievement={achievement} />
 
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container mx-auto">
-          {/*<RenderBlocks blocks={achievement.layout} />*/}
-          {/*{achievement.relatedAchievements && achievement.relatedAchievements.length > 0 && (*/}
-          {/*  <RelatedPosts*/}
-          {/*    className="mt-12 max-w-208 lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"*/}
-          {/*    docs={achievement.relatedAchievements.filter((post) => typeof post === 'object')}*/}
-          {/*  />*/}
-          {/*)}*/}
+          <RenderBlocks blocks={achievement.layout} />
+          {achievement.relatedAchievements && achievement.relatedAchievements.length > 0 && (
+            <RelatedAchievements
+              className="mt-12 max-w-208 lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
+              docs={achievement.relatedAchievements.filter((doc) => typeof doc === 'object')}
+            />
+          )}
         </div>
       </div>
     </article>

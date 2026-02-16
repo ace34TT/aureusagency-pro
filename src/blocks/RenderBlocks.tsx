@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import type { Page } from '@/payload-types'
+import type { Achievement, Page, Post } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
@@ -15,6 +15,8 @@ import Testimonials from '@/blocks/Testimonials/Component'
 import BlogList from '@/blocks/BlogList/Component'
 import AchievementList from '@/blocks/AchievementList/Component'
 import { SplitSection } from '@/blocks/SplitSection/Component'
+import { BannerBlock } from '@/blocks/Banner/Component'
+import { CodeBlock } from '@/blocks/Code/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -30,10 +32,12 @@ const blockComponents = {
   blogList: BlogList,
   achievementList: AchievementList,
   splitSection: SplitSection,
+  banner: BannerBlock,
+  code: CodeBlock,
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: (Page['layout'][0] | Post['layout'][0] | Achievement['layout'][0])[]
 }> = (props) => {
   const { blocks } = props
 
@@ -46,7 +50,7 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType as keyof typeof blockComponents]
 
             if (Block) {
               return (
