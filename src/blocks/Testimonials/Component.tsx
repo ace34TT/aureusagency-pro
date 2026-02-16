@@ -67,7 +67,7 @@ export const Testimonials = ({ title, richHeadline, testimonials }: Testimonials
               dynamicBullets: true,
             }}
             navigation={true}
-            className="testimonial-swiper !pb-12 !px-4"
+            className="testimonial-swiper pb-12! px-4!"
           >
             {(testimonials || []).map((t, index) => (
               <SwiperSlide key={t.id || index}>

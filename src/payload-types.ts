@@ -1197,7 +1197,7 @@ export interface SplitSectionBlock {
  * via the `definition` "TestimonialsBlock".
  */
 export interface TestimonialsBlock {
-  title?: string | null;
+  tagline?: string | null;
   richHeadline?: {
     root: {
       type: string;
@@ -1816,7 +1816,7 @@ export interface SplitSectionBlockSelect<T extends boolean = true> {
  * via the `definition` "TestimonialsBlock_select".
  */
 export interface TestimonialsBlockSelect<T extends boolean = true> {
-  title?: T;
+  tagline?: T;
   richHeadline?: T;
   testimonials?:
     | T

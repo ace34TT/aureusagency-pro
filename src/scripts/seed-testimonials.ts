@@ -30,7 +30,7 @@ async function seedTestimonials() {
   // Define the Testimonials Block Data
   const testimonialsBlock = {
     blockType: 'testimonials' as const,
-    title: 'Témoignages',
+    tagline: 'Témoignages',
     richHeadline: {
       root: {
         type: 'root',

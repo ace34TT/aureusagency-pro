@@ -1,4 +1,5 @@
 import type { Block } from 'payload'
+import { HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 
 export const WorkShowcase: Block = {
   slug: 'workShowcase',
@@ -12,6 +13,12 @@ export const WorkShowcase: Block = {
       name: 'richHeadline',
       type: 'richText',
       label: 'Headline',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3'] }),
+        ],
+      }),
     },
     {
       name: 'richDescription',

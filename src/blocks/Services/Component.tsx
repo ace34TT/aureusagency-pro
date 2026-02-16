@@ -1,5 +1,6 @@
 import { theme } from '@/utilities/theme'
 import RichText from '@/components/RichText'
+import React from 'react'
 
 type ServiceProps = {
   tagline?: string | null

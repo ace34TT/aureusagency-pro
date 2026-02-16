@@ -1,18 +1,25 @@
 import type { Block } from 'payload'
+import { HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 
 export const Testimonials: Block = {
   slug: 'testimonials',
   interfaceName: 'TestimonialsBlock',
   fields: [
     {
-      name: 'title',
+      name: 'tagline',
       type: 'text',
-      label: 'Title',
+      label: 'Tagline',
     },
     {
       name: 'richHeadline',
       type: 'richText',
       label: 'Headline',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3'] }),
+        ],
+      }),
     },
     {
       name: 'testimonials',
