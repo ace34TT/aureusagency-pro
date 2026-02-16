@@ -1,4 +1,5 @@
 import { cn } from '@/utilities/ui'
+import { theme } from '@/utilities/theme'
 import React from 'react'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
@@ -14,17 +15,25 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
   title,
 }) => {
   return (
-    <section className="py-24">
+    <section className="relative py-24 overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[10%] left-[10%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[10%] h-125 w-125 rounded-full bg-blue-50/40 blur-[120px]" />
+      </div>
+
       <Gutter>
-        <div className="mx-auto container">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div className="mx-auto container relative z-10">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-14 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <div className={cn(reverse ? 'lg:order-last' : 'lg:order-first')}>
-              <div className="text-base leading-7 text-gray-700 lg:max-w-lg">
-                <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <div className="text-base leading-7 lg:max-w-lg">
+                <h2 className="mt-2 text-3xl font-(--font-marcellus) text-[#0F172A] sm:text-4xl leading-tight">
                   {title}
                 </h2>
-                <div className="max-w-xl">{content && <RichText data={content} />}</div>
-                <div className="mt-8">
+                <div className={`max-w-xl mt-6 text-lg ${theme.inkMuted}`}>
+                  {content && <RichText data={content} enableGutter={false} />}
+                </div>
+                <div className="mt-10 flex flex-wrap gap-4">
                   {(links || []).map(({ link }, i) => {
                     return (
                       <CMSLink
@@ -40,19 +49,19 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
             </div>
             <div
               className={cn(
-                'relative isolate overflow-hidden rounded-3xl bg-gray-900',
+                'relative isolate overflow-hidden rounded-[28px] bg-white border border-[#0F172A]/10 shadow-[0_20px_60px_rgba(15,23,42,0.1)]',
                 reverse ? 'lg:order-first' : 'lg:order-last',
               )}
             >
-              {image && typeof image === 'object' && (
-                <MediaComponent
-                  resource={image}
-                  fill
-                  imgClassName="absolute inset-0 -z-10 h-full w-full object-cover"
-                />
-              )}
-              {/* Optional overlay if needed, currently just the image */}
-              <div className="min-h-100 w-full"></div>
+              <div className="relative aspect-square md:aspect-4/3 lg:aspect-auto lg:h-150">
+                {image && typeof image === 'object' && (
+                  <MediaComponent
+                    resource={image}
+                    fill
+                    imgClassName="absolute inset-0 h-full w-full object-contain"
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
