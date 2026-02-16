@@ -5,8 +5,9 @@ export const Testimonials: Block = {
   interfaceName: 'TestimonialsBlock',
   fields: [
     {
-      name: 'tagline',
+      name: 'title',
       type: 'text',
+      label: 'Title',
     },
     {
       name: 'richHeadline',

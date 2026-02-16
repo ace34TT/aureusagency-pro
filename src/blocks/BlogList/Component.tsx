@@ -70,7 +70,7 @@ export const BlogList = async (
             {/* Optional Tagline if we had one, or just static 'Blog' */}
             BLOG
           </div>
-          <div className="text-3xl font-(--font-marcellus) text-[#0F172A] md:text-4xl mb-6">
+          <div className="text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight mb-6">
             {title && <RichText data={title} enableGutter={false} />}
           </div>
           <div className={`text-base ${theme.inkMuted}`}>

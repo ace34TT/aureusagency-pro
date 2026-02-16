@@ -27,10 +27,8 @@ const Services = ({ tagline, richHeadline, richDescription, services }: ServiceP
             <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>
               {tagline || 'Services'}
             </p>
-            <div className="mt-4 text-3xl font-(--font-marcellus) md:text-4xl">
-              {richHeadline && (
-                <RichText data={richHeadline} className={'text-[#0F172A]'} enableGutter={false} />
-              )}
+            <div className="mt-4 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
+              {richHeadline && <RichText data={richHeadline} enableGutter={false} />}
             </div>
             <div className={`mt-4 text-base ${theme.inkMuted}`}>
               {richDescription && <RichText data={richDescription} enableGutter={false} />}

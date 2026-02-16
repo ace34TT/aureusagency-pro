@@ -28,7 +28,7 @@ const WorkShowcase = ({ tagline, richHeadline, richDescription, projects }: Work
             <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>
               {tagline || 'Etudes rapides'}
             </p>
-            <div className="mt-4 text-3xl font-(--font-marcellus) text-[#0F172A] md:text-4xl">
+            <div className="mt-4 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
               {richHeadline && <RichText data={richHeadline} enableGutter={false} />}
             </div>
           </div>

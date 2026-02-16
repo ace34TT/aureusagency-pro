@@ -13,7 +13,9 @@ import { Services } from '@/blocks/Services/config'
 import { MarqueeBlock } from '@/blocks/Marquee/config'
 import { BlogList } from '@/blocks/BlogList/config'
 import { AchievementList } from '@/blocks/AchievementList/config'
+
 import { SplitSection } from '@/blocks/SplitSection/config'
+import { Testimonials } from '@/blocks/Testimonials/config'
 import { hero } from '@/heros/config'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
@@ -89,7 +91,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 WorkShowcase,
                 BlogList,
                 AchievementList,
+
                 SplitSection,
+                Testimonials,
               ],
               required: true,
               admin: {

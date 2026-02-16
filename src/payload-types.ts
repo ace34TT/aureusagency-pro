@@ -216,6 +216,7 @@ export interface Page {
     | BlogListBlock
     | AchievementListBlock
     | SplitSectionBlock
+    | TestimonialsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1088,6 +1089,40 @@ export interface SplitSectionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock".
+ */
+export interface TestimonialsBlock {
+  title?: string | null;
+  richHeadline?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  testimonials?:
+    | {
+        quote: string;
+        authorName: string;
+        authorRole: string;
+        authorImage?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "achievements".
  */
 export interface Achievement {
@@ -1445,6 +1480,7 @@ export interface PagesSelect<T extends boolean = true> {
         blogList?: T | BlogListBlockSelect<T>;
         achievementList?: T | AchievementListBlockSelect<T>;
         splitSection?: T | SplitSectionBlockSelect<T>;
+        testimonials?: T | TestimonialsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1644,6 +1680,25 @@ export interface SplitSectionBlockSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock_select".
+ */
+export interface TestimonialsBlockSelect<T extends boolean = true> {
+  title?: T;
+  richHeadline?: T;
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        authorName?: T;
+        authorRole?: T;
+        authorImage?: T;
         id?: T;
       };
   id?: T;

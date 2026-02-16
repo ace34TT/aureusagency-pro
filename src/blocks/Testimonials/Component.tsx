@@ -14,7 +14,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
 
 type TestimonialsProps = {
-  tagline?: string | null
+  title?: string | null
   richHeadline?: any
   testimonials?: {
     quote: string
@@ -25,9 +25,9 @@ type TestimonialsProps = {
   }[]
 }
 
-export const Testimonials = ({ tagline, richHeadline, testimonials }: TestimonialsProps) => {
+export const Testimonials = ({ title, richHeadline, testimonials }: TestimonialsProps) => {
   return (
-    <section className="relative px-6 py-24 overflow-hidden bg-white">
+    <section className="relative px-6 py-24 overflow-hidden">
       {/* Masque de transition pour éviter le rude cut et fondre les bulles */}
       <div
         className="absolute inset-0 z-20 pointer-events-none"
@@ -47,17 +47,14 @@ export const Testimonials = ({ tagline, richHeadline, testimonials }: Testimonia
       <div className="relative mx-auto container z-30">
         <div className="text-center max-w-3xl mx-auto">
           {/* Badge identique au Process */}
-          <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>
-            {tagline || 'Témoignages'}
-          </p>
-
+          <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>Témoignages</p>
           {/* Titre identique au Process (Marcellus) */}
-          <div className="mt-4 text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight md:text-5xl">
-            {richHeadline && <RichText data={richHeadline} enableGutter={false} />}
-          </div>
+          <h2 className="mt-4 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
+            {title || (richHeadline && <RichText data={richHeadline} enableGutter={false} />)}
+          </h2>
         </div>
 
-        <div className="mt-16 max-w-5xl mx-auto bg-primary/5 rounded-[40px] px-6 py-12 md:p-16 border border-primary/10 relative">
+        <div className="mt-16 max-w-5xl mx-auto bg-white/80 backdrop-blur-sm rounded-[40px] px-6 py-12 md:p-16 border border-[#0F172A]/10 shadow-[0_20px_60px_rgba(15,23,42,0.1)] relative">
           <Swiper
             modules={[Autoplay, Pagination, EffectFade, Navigation]}
             effect="fade"
@@ -76,7 +73,7 @@ export const Testimonials = ({ tagline, richHeadline, testimonials }: Testimonia
               <SwiperSlide key={t.id || index}>
                 <div className="flex flex-col items-center text-center cursor-grab">
                   {/* Icône Quote stylisée */}
-                  <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-primary shadow-sm">
+                  <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary shadow-sm border border-primary/10">
                     <Quote size={28} />
                   </div>
 

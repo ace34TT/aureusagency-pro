@@ -27,7 +27,7 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
           <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-14 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <div className={cn(reverse ? 'lg:order-last' : 'lg:order-first')}>
               <div className="text-base leading-7 lg:max-w-lg">
-                <h2 className="mt-2 text-3xl font-(--font-marcellus) text-[#0F172A] sm:text-4xl leading-tight">
+                <h2 className="mt-2 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
                   {title}
                 </h2>
                 <div className={`max-w-xl mt-6 text-lg ${theme.inkMuted}`}>
