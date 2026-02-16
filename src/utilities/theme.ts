@@ -11,7 +11,7 @@ export const theme = {
   glowA: 'bg-[#9AD5CA]/50',
   glowB: 'bg-[#F6B3A7]/35',
   button:
-    'rounded-full bg-[#0F172A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#F5F2EB] transition hover:-translate-y-0.5 hover:bg-[#111C2E]',
+    'rounded-full bg-[#0F172A] px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-[#F5F2EB] transition hover:-translate-y-0.5 hover:bg-[#111C2E] shadow-[0_10px_30px_rgba(15,23,42,0.15)]',
   buttonGhost:
     'inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#0F172A] transition hover:gap-3',
 }

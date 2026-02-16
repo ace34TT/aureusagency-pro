@@ -60,9 +60,7 @@ import Image from 'next/image'
 import { NewsletterForm } from '@/components/Form/NewsletterForm'
 import { HeaderNavItems } from '@/Header/Component.client'
 
-
 export type SocialLinks = Global['socialLinks']
-
 
 export async function Footer() {
   const footerData: Footer = (await getCachedGlobal('footer', 1)()) as Footer
@@ -166,7 +164,7 @@ export async function Footer() {
             href={link.url}
             target={'_blank'}
             rel={'noopener noreferrer'}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-400 transition hover:border-primary hover:text-primary"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-400 transition hover:border-primary hover:text-primary hover:bg-slate-50"
             aria-label={link.url}
           >
             {icon}

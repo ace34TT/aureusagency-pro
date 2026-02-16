@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import { Button } from '@/components/ui/button'
+
 export const NewsletterForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -14,16 +16,16 @@ export const NewsletterForm = () => {
       <input
         type="email"
         placeholder="votre@email.com"
-        className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm text-slate-900 outline-none focus:border-primary/50 transition-all placeholder:text-slate-400"
+        className="w-full bg-slate-50 border border-slate-200 rounded-full py-3 px-6 text-sm text-slate-900 outline-none focus:border-primary/50 transition-all placeholder:text-slate-400 h-11"
         required
       />
-      <button
+      <Button
         type="submit"
-        className="w-full py-2.5 rounded-lg text-xs font-bold uppercase tracking-[0.15em] transition-all hover:scale-[1.02] active:scale-95 cursor-pointer shadow-sm"
-        style={{ backgroundColor: 'oklch(59.73% 0.224 279.77deg)', color: 'white' }}
+        className="w-full shadow-sm bg-[oklch(59.73%_0.224_279.77deg)] hover:bg-[oklch(55%_0.224_279.77deg)] text-white"
+        size="default"
       >
         S&apos;abonner
-      </button>
+      </Button>
     </form>
   )
 }
