@@ -101,10 +101,10 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
         href={href || url || ''}
         {...newTabProps}
       >
-        {Icon && iconPosition === 'left' && <Icon size={iconSize} />}
+        {Icon && iconPosition === 'left' && <Icon size={iconSize} className="scale-x-[-1]" />}
         {label && label}
         {children && children}
-        {Icon && iconPosition === 'right' && <Icon size={iconSize} className="scale-x-[-1]" />}
+        {Icon && iconPosition === 'right' && <Icon size={iconSize} />}
       </Link>
     )
   }
@@ -116,10 +116,10 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
         href={href || url || ''}
         {...newTabProps}
       >
-        {Icon && iconPosition === 'left' && <Icon size={iconSize} />}
+        {Icon && iconPosition === 'left' && <Icon size={iconSize} className="scale-x-[-1]" />}
         {label && label}
         {children && children}
-        {Icon && iconPosition === 'right' && <Icon size={iconSize} className="scale-x-[-1]" />}
+        {Icon && iconPosition === 'right' && <Icon size={iconSize} />}
       </Link>
     </Button>
   )
