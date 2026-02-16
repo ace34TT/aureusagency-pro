@@ -178,6 +178,36 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
+    title?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     links?:
       | {
           link: {
@@ -199,6 +229,13 @@ export interface Page {
              */
             appearance?: ('default' | 'outline') | null;
           };
+          id?: string | null;
+        }[]
+      | null;
+    badge?: string | null;
+    features?:
+      | {
+          text?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -1449,6 +1486,8 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
+        title?: T;
+        description?: T;
         links?:
           | T
           | {
@@ -1462,6 +1501,13 @@ export interface PagesSelect<T extends boolean = true> {
                     label?: T;
                     appearance?: T;
                   };
+              id?: T;
+            };
+        badge?: T;
+        features?:
+          | T
+          | {
+              text?: T;
               id?: T;
             };
         media?: T;

@@ -52,12 +52,66 @@ export const hero: Field = {
         },
       }),
       label: false,
+      admin: {
+        condition: (_, { type } = {}) => type !== 'highImpact',
+      },
+    },
+    {
+      name: 'title',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h1'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+      label: 'Title',
+      admin: {
+        condition: (_, { type } = {}) => type === 'highImpact',
+      },
+    },
+    {
+      name: 'description',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+        },
+      }),
+      label: 'Description',
+      admin: {
+        condition: (_, { type } = {}) => type === 'highImpact',
+      },
     },
     linkGroup({
       overrides: {
         maxRows: 2,
       },
     }),
+    {
+      name: 'badge',
+      type: 'text',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
+    },
+    {
+      name: 'features',
+      type: 'array',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
+      },
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+        },
+      ],
+    },
     {
       name: 'media',
       type: 'upload',
