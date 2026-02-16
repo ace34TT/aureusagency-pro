@@ -228,6 +228,23 @@ export interface Page {
              * Choose how the link should be rendered.
              */
             appearance?: ('default' | 'outline') | null;
+            enableIcon?: boolean | null;
+            icon?:
+              | (
+                  | 'arrowRight'
+                  | 'arrowLeft'
+                  | 'chevronRight'
+                  | 'chevronLeft'
+                  | 'plus'
+                  | 'externalLink'
+                  | 'download'
+                  | 'play'
+                  | 'info'
+                  | 'phone'
+                  | 'calendar'
+                )
+              | null;
+            iconPosition?: ('left' | 'right') | null;
           };
           id?: string | null;
         }[]
@@ -597,6 +614,23 @@ export interface CallToActionBlock {
            * Choose how the link should be rendered.
            */
           appearance?: ('default' | 'outline') | null;
+          enableIcon?: boolean | null;
+          icon?:
+            | (
+                | 'arrowRight'
+                | 'arrowLeft'
+                | 'chevronRight'
+                | 'chevronLeft'
+                | 'plus'
+                | 'externalLink'
+                | 'download'
+                | 'play'
+                | 'info'
+                | 'phone'
+                | 'calendar'
+              )
+            | null;
+          iconPosition?: ('left' | 'right') | null;
         };
         id?: string | null;
       }[]
@@ -647,6 +681,23 @@ export interface ContentBlock {
            * Choose how the link should be rendered.
            */
           appearance?: ('default' | 'outline') | null;
+          enableIcon?: boolean | null;
+          icon?:
+            | (
+                | 'arrowRight'
+                | 'arrowLeft'
+                | 'chevronRight'
+                | 'chevronLeft'
+                | 'plus'
+                | 'externalLink'
+                | 'download'
+                | 'play'
+                | 'info'
+                | 'phone'
+                | 'calendar'
+              )
+            | null;
+          iconPosition?: ('left' | 'right') | null;
         };
         id?: string | null;
       }[]
@@ -1116,6 +1167,23 @@ export interface SplitSectionBlock {
            * Choose how the link should be rendered.
            */
           appearance?: ('default' | 'outline') | null;
+          enableIcon?: boolean | null;
+          icon?:
+            | (
+                | 'arrowRight'
+                | 'arrowLeft'
+                | 'chevronRight'
+                | 'chevronLeft'
+                | 'plus'
+                | 'externalLink'
+                | 'download'
+                | 'play'
+                | 'info'
+                | 'phone'
+                | 'calendar'
+              )
+            | null;
+          iconPosition?: ('left' | 'right') | null;
         };
         id?: string | null;
       }[]
@@ -1500,6 +1568,9 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                     label?: T;
                     appearance?: T;
+                    enableIcon?: T;
+                    icon?: T;
+                    iconPosition?: T;
                   };
               id?: T;
             };
@@ -1561,6 +1632,9 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
             };
         id?: T;
       };
@@ -1587,6 +1661,9 @@ export interface ContentBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
             };
         id?: T;
       };
@@ -1725,6 +1802,9 @@ export interface SplitSectionBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
             };
         id?: T;
       };
@@ -2296,6 +2376,23 @@ export interface Header {
               } | null);
           url?: string | null;
           label: string;
+          enableIcon?: boolean | null;
+          icon?:
+            | (
+                | 'arrowRight'
+                | 'arrowLeft'
+                | 'chevronRight'
+                | 'chevronLeft'
+                | 'plus'
+                | 'externalLink'
+                | 'download'
+                | 'play'
+                | 'info'
+                | 'phone'
+                | 'calendar'
+              )
+            | null;
+          iconPosition?: ('left' | 'right') | null;
         };
         id?: string | null;
       }[]
@@ -2320,6 +2417,23 @@ export interface Header {
            * Choose how the link should be rendered.
            */
           appearance?: 'default' | null;
+          enableIcon?: boolean | null;
+          icon?:
+            | (
+                | 'arrowRight'
+                | 'arrowLeft'
+                | 'chevronRight'
+                | 'chevronLeft'
+                | 'plus'
+                | 'externalLink'
+                | 'download'
+                | 'play'
+                | 'info'
+                | 'phone'
+                | 'calendar'
+              )
+            | null;
+          iconPosition?: ('left' | 'right') | null;
         };
         id?: string | null;
       }[]
@@ -2353,6 +2467,23 @@ export interface Footer {
               } | null);
           url?: string | null;
           label: string;
+          enableIcon?: boolean | null;
+          icon?:
+            | (
+                | 'arrowRight'
+                | 'arrowLeft'
+                | 'chevronRight'
+                | 'chevronLeft'
+                | 'plus'
+                | 'externalLink'
+                | 'download'
+                | 'play'
+                | 'info'
+                | 'phone'
+                | 'calendar'
+              )
+            | null;
+          iconPosition?: ('left' | 'right') | null;
         };
         id?: string | null;
       }[]
@@ -2373,6 +2504,23 @@ export interface Footer {
               } | null);
           url?: string | null;
           label: string;
+          enableIcon?: boolean | null;
+          icon?:
+            | (
+                | 'arrowRight'
+                | 'arrowLeft'
+                | 'chevronRight'
+                | 'chevronLeft'
+                | 'plus'
+                | 'externalLink'
+                | 'download'
+                | 'play'
+                | 'info'
+                | 'phone'
+                | 'calendar'
+              )
+            | null;
+          iconPosition?: ('left' | 'right') | null;
         };
         id?: string | null;
       }[]
@@ -2418,6 +2566,9 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
             };
         id?: T;
       };
@@ -2433,6 +2584,9 @@ export interface HeaderSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
             };
         id?: T;
       };
@@ -2457,6 +2611,9 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
             };
         id?: T;
       };
@@ -2471,6 +2628,9 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
             };
         id?: T;
       };

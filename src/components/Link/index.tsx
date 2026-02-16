@@ -1,5 +1,18 @@
 import { Button, type ButtonProps } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  Download,
+  ExternalLink,
+  Info,
+  Phone,
+  Play,
+  Plus,
+} from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -18,6 +31,35 @@ type CMSLinkType = {
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
+  enableIcon?: boolean | null
+  icon?:
+    | 'arrowRight'
+    | 'arrowLeft'
+    | 'chevronRight'
+    | 'chevronLeft'
+    | 'plus'
+    | 'externalLink'
+    | 'download'
+    | 'play'
+    | 'info'
+    | 'phone'
+    | 'calendar'
+    | null
+  iconPosition?: 'left' | 'right' | null
+}
+
+const icons = {
+  arrowRight: ArrowRight,
+  arrowLeft: ArrowLeft,
+  chevronRight: ChevronRight,
+  chevronLeft: ChevronLeft,
+  plus: Plus,
+  externalLink: ExternalLink,
+  download: Download,
+  play: Play,
+  info: Info,
+  phone: Phone,
+  calendar: Calendar,
 }
 
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
@@ -31,7 +73,13 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     reference,
     size: sizeFromProps,
     url,
+    enableIcon,
+    icon,
+    iconPosition = 'right',
   } = props
+
+  const Icon = enableIcon && icon && icons[icon] ? icons[icon] : null
+  const iconSize = sizeFromProps === 'lg' ? 20 : 16 // Adjust icon size based on button size if needed
 
   const href =
     type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
@@ -48,18 +96,30 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link
+        className={cn(className, 'inline-flex items-center gap-2')}
+        href={href || url || ''}
+        {...newTabProps}
+      >
+        {Icon && iconPosition === 'left' && <Icon size={iconSize} />}
         {label && label}
         {children && children}
+        {Icon && iconPosition === 'right' && <Icon size={iconSize} className="scale-x-[-1]" />}
       </Link>
     )
   }
 
   return (
     <Button asChild className={className} size={size} variant={appearance}>
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link
+        className={cn(className, 'flex items-center gap-2')}
+        href={href || url || ''}
+        {...newTabProps}
+      >
+        {Icon && iconPosition === 'left' && <Icon size={iconSize} />}
         {label && label}
         {children && children}
+        {Icon && iconPosition === 'right' && <Icon size={iconSize} className="scale-x-[-1]" />}
       </Link>
     </Button>
   )

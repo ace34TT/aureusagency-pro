@@ -135,5 +135,58 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
     })
   }
 
+  linkResult.fields.push({
+    type: 'row',
+    fields: [
+      {
+        name: 'enableIcon',
+        type: 'checkbox',
+        label: 'Add Icon',
+        admin: {
+          width: '20%',
+          style: {
+            alignSelf: 'flex-end',
+          },
+        },
+      },
+      {
+        name: 'icon',
+        type: 'select',
+        label: 'Icon',
+        admin: {
+          width: '40%',
+          condition: (_, siblingData) => siblingData?.enableIcon,
+        },
+        options: [
+          { label: 'Arrow Right', value: 'arrowRight' },
+          { label: 'Arrow Left', value: 'arrowLeft' },
+          { label: 'Chevron Right', value: 'chevronRight' },
+          { label: 'Chevron Left', value: 'chevronLeft' },
+          { label: 'Plus', value: 'plus' },
+          { label: 'External Link', value: 'externalLink' },
+          { label: 'Download', value: 'download' },
+          { label: 'Play', value: 'play' },
+          { label: 'Info', value: 'info' },
+          { label: 'Phone', value: 'phone' },
+          { label: 'Calendar', value: 'calendar' },
+        ],
+      },
+      {
+        name: 'iconPosition',
+        type: 'select',
+        label: 'Position',
+        defaultValue: 'right',
+        admin: {
+          width: '40%',
+          condition: (_, siblingData) => siblingData?.enableIcon,
+        },
+        options: [
+          { label: 'Left', value: 'left' },
+          { label: 'Right', value: 'right' },
+        ],
+      },
+    ],
+  })
+
   return deepMerge(linkResult, overrides)
 }
