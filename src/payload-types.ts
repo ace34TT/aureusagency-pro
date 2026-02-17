@@ -1213,6 +1213,21 @@ export interface TestimonialsBlock {
     };
     [k: string]: unknown;
   } | null;
+  richDescription?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   testimonials?:
     | {
         quote: string;
@@ -1818,6 +1833,7 @@ export interface SplitSectionBlockSelect<T extends boolean = true> {
 export interface TestimonialsBlockSelect<T extends boolean = true> {
   tagline?: T;
   richHeadline?: T;
+  richDescription?: T;
   testimonials?:
     | T
     | {

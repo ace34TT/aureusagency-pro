@@ -14,8 +14,9 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
 
 type TestimonialsProps = {
-  title?: string | null
+  tagline?: string | null
   richHeadline?: any
+  richDescription?: any
   testimonials?: {
     quote: string
     authorName: string
@@ -25,7 +26,12 @@ type TestimonialsProps = {
   }[]
 }
 
-export const Testimonials = ({ title, richHeadline, testimonials }: TestimonialsProps) => {
+export const Testimonials = ({
+  tagline,
+  richHeadline,
+  richDescription,
+  testimonials,
+}: TestimonialsProps) => {
   return (
     <section className="relative px-6 py-24 overflow-hidden">
       {/* Masque de transition pour éviter le rude cut et fondre les bulles */}
@@ -47,11 +53,16 @@ export const Testimonials = ({ title, richHeadline, testimonials }: Testimonials
       <div className="relative mx-auto container z-30">
         <div className="text-center max-w-3xl mx-auto">
           {/* Badge identique au Process */}
-          <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>Témoignages</p>
+          <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>
+            {tagline || 'Témoignages'}
+          </p>
           {/* Titre identique au Process (Marcellus) */}
-          <h2 className="mt-4 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
-            {title || (richHeadline && <RichText data={richHeadline} enableGutter={false} />)}
-          </h2>
+          <div className="mt-4 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
+            {richHeadline && <RichText data={richHeadline} enableGutter={false} />}
+          </div>
+          <div className={`mt-4 text-base ${theme.inkMuted}`}>
+            {richDescription && <RichText data={richDescription} enableGutter={false} />}
+          </div>
         </div>
 
         <div className="mt-16 max-w-5xl mx-auto bg-white/80 backdrop-blur-sm rounded-[40px] px-6 py-12 md:p-16 border border-[#0F172A]/10 shadow-[0_20px_60px_rgba(15,23,42,0.1)] relative">

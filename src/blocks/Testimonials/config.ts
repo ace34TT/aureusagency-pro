@@ -22,6 +22,14 @@ export const Testimonials: Block = {
       }),
     },
     {
+      name: 'richDescription',
+      type: 'richText',
+      label: 'Description',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures],
+      }),
+    },
+    {
       name: 'testimonials',
       type: 'array',
       minRows: 1,
