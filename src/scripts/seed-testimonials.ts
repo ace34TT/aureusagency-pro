@@ -43,7 +43,7 @@ async function seedTestimonials() {
           },
         ],
         direction: 'ltr' as 'ltr' | 'rtl' | null,
-        format: '',
+        format: '' as const,
         indent: 0,
         version: 1,
       },
@@ -66,7 +66,7 @@ async function seedTestimonials() {
 
   // Find existing Testimonials block and replace it, or append if not found
   const testimonialIndex = layout.findIndex((block: any) => block.blockType === 'testimonials')
-  let newLayout = [...layout]
+  const newLayout = [...layout]
 
   if (testimonialIndex > -1) {
     console.log('Found existing Testimonials block. Updating...')

@@ -26,9 +26,13 @@ export async function generateStaticParams() {
     },
   })
 
-  return posts.docs.map(({ slug }) => {
-    return { slug }
-  })
+  return posts.docs
+    .filter(
+      (doc) => doc.slug !== 'pourquoi-larchitecture-headless-avec-payload-cms-est-lavenir-du-web',
+    )
+    .map(({ slug }) => {
+      return { slug }
+    })
 }
 
 type Args = {
@@ -74,12 +78,20 @@ export default async function Post({ params: paramsPromise }: Args) {
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { slug = '' } = await paramsPromise
-  // Decode to support slugs with special characters
-  const decodedSlug = decodeURIComponent(slug)
-  const post = await queryPostBySlug({ slug: decodedSlug })
+  try {
+    const { slug = '' } = await paramsPromise
+    // Decode to support slugs with special characters
+    const decodedSlug = decodeURIComponent(slug)
+    const post = await queryPostBySlug({ slug: decodedSlug })
 
-  return generateMeta({ doc: post })
+    return generateMeta({ doc: post })
+  } catch (error) {
+    console.error(`Error generating metadata for post:`, error)
+    return {
+      title: 'Post',
+      description: 'Error loading post metadata',
+    }
+  }
 }
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
