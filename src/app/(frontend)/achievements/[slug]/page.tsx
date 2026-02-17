@@ -80,7 +80,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const decodedSlug = decodeURIComponent(slug)
   const achievement = await queryAchievementBySlug({ slug: decodedSlug })
 
-  return generateMeta({ doc: achievement })
+  return generateMeta({ doc: achievement, path: `/achievements/${decodedSlug}` })
 }
 
 const queryAchievementBySlug = cache(async ({ slug }: { slug: string }) => {
