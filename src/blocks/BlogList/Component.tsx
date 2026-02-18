@@ -56,7 +56,7 @@ export const BlogList = async (
   })
 
   return (
-    <section className="relative px-6 py-24 overflow-hidden">
+    <section className={`relative px-6 ${mode === 'all' ? 'pt-0 pb-24' : 'py-24'} overflow-hidden`}>
       {/* Background Decor matching WorkShowcase */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -66,10 +66,13 @@ export const BlogList = async (
       <div className="relative mx-auto container z-10">
         {/* Header */}
         <div className="mb-16 max-w-2xl">
-          <div className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft} mb-4`}>
-            {/* Optional Tagline if we had one, or just static 'Blog' */}
-            BLOG
-          </div>
+          {mode === 'latest' && (
+            <div className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft} mb-4`}>
+              {/* Optional Tagline if we had one, or just static 'Blog' */}
+              BLOG
+            </div>
+          )}
+
           <div className="text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight mb-6">
             {title && <RichText data={title} enableGutter={false} />}
           </div>

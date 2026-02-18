@@ -20,11 +20,22 @@ import '@/styles/typography.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import { GoogleTagManager } from '@next/third-parties/google'
 
+import localFont from 'next/font/local'
+
+const overcameOutline = localFont({
+  src: '../../../public/fonts/overcame-demo.outline.ttf',
+  variable: '--font-outline',
+})
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="fr" suppressHydrationWarning>
+    <html
+      className={cn(GeistSans.variable, GeistMono.variable, overcameOutline.variable)}
+      lang="fr"
+      suppressHydrationWarning
+    >
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />

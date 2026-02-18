@@ -2,6 +2,9 @@
 const config = {
   theme: {
     extend: {
+      fontFamily: {
+        outline: ['var(--font-outline)'],
+      },
       typography: () => ({
         DEFAULT: {
           css: [
