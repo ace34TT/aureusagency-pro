@@ -1,6 +1,5 @@
 import { CollectionConfig, slugField } from 'payload'
 
-
 import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { Banner } from '@/blocks/Banner/config'
@@ -140,6 +139,14 @@ export const Posts: CollectionConfig<'posts'> = {
             }),
 
             MetaDescriptionField({}),
+            {
+              name: 'keywords',
+              label: 'Keywords',
+              type: 'textarea',
+              admin: {
+                description: 'Keywords for SEO (comma-separated)',
+              },
+            },
             PreviewField({
               // if the `generateUrl` function is configured
               hasGenerateFn: true,

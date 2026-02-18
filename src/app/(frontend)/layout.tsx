@@ -24,7 +24,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="fr" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
@@ -68,9 +68,28 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
+  title: {
+    default: 'Aureus Agency',
+    template: '%s | Aureus Agency',
+  },
+  description: 'Agence innovation digital',
+  keywords: [
+    'Agence web',
+    'Développement',
+    'Design',
+    'SEO',
+    'Marketing Digital',
+    'Payload CMS',
+    'Next.js',
+  ],
+  publisher: 'Aureus Agency',
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
+    creator: '@aureusagency',
   },
 }

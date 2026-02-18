@@ -32,8 +32,20 @@ export const generateMeta = async (args: {
   const serverUrl = getServerSideURL()
   const url = path ? `${serverUrl}${path}` : serverUrl
 
+  // Parse keywords: handled as comma-separated string from the admin panel
+  let keywords: string[] | undefined = undefined
+  const meta: any = doc?.meta
+  if (meta?.keywords) {
+    if (typeof meta.keywords === 'string') {
+      keywords = meta.keywords.split(',').map((k: string) => k.trim())
+    } else if (Array.isArray(meta.keywords)) {
+      keywords = meta.keywords
+    }
+  }
+
   return {
     description: doc?.meta?.description,
+    keywords,
     openGraph: mergeOpenGraph({
       description: doc?.meta?.description || '',
       images: ogImage

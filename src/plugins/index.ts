@@ -54,6 +54,17 @@ export const plugins: Plugin[] = [
   seoPlugin({
     generateTitle,
     generateURL,
+    fields: ({ defaultFields }) => [
+      ...defaultFields,
+      {
+        name: 'keywords',
+        label: 'Keywords',
+        type: 'textarea',
+        admin: {
+          description: 'Keywords for SEO (comma-separated)',
+        },
+      },
+    ],
   }),
   formBuilderPlugin({
     fields: {

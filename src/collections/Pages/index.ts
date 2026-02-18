@@ -120,6 +120,14 @@ export const Pages: CollectionConfig<'pages'> = {
             }),
 
             MetaDescriptionField({}),
+            {
+              name: 'keywords',
+              label: 'Keywords',
+              type: 'textarea',
+              admin: {
+                description: 'Keywords for SEO (comma-separated)',
+              },
+            },
             PreviewField({
               // if the `generateUrl` function is configured
               hasGenerateFn: true,
