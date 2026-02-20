@@ -183,8 +183,36 @@ export const BlogList = async (
               )
             })
           ) : (
-            <div className="col-span-full py-12 text-center text-slate-500">
-              Aucun article trouvé pour ce filtre.
+            <div className="col-span-full">
+              <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 rounded-[32px] border border-[#0F172A]/10 bg-white/80 px-8 py-12 text-center shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:flex-row md:text-left">
+                <div className="w-full max-w-[320px] shrink-0">
+                  <img
+                    src="/undraw_void_wez2.png"
+                    alt="Aucun article trouvé"
+                    className="h-auto w-full"
+                  />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs uppercase tracking-[0.35em] text-[#0F172A]/50">
+                    Aucun résultat
+                  </p>
+                  <h3 className="mt-3 text-2xl font-(--font-marcellus) text-[#0F172A]">
+                    Aucun article trouvé pour ce filtre
+                  </h3>
+                  <p className={`mt-3 text-sm ${theme.inkMuted}`}>
+                    Essayez un autre tag ou revenez voir nos dernières publications.
+                  </p>
+                  <div className="mt-6">
+                    <Link
+                      href="?"
+                      scroll={false}
+                      className="inline-flex items-center gap-2 rounded-full border border-[#0F172A] px-5 py-2 text-xs font-medium uppercase tracking-wider text-[#0F172A] transition-colors hover:bg-[#0F172A] hover:text-white"
+                    >
+                      Voir tous les articles
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
