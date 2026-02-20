@@ -20,11 +20,12 @@ export const Number: React.FC<
 
         {required && (
           <span className="required">
-            * <span className="sr-only">(required)</span>
+            * <span className="sr-only">(requis)</span>
           </span>
         )}
       </Label>
       <Input
+        className="mt-2 h-12 rounded-xl text-base md:h-14"
         defaultValue={defaultValue}
         id={name}
         type="number"

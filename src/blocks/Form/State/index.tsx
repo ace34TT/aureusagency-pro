@@ -28,7 +28,7 @@ export const State: React.FC<
         {label}
         {required && (
           <span className="required">
-            * <span className="sr-only">(required)</span>
+            * <span className="sr-only">(requis)</span>
           </span>
         )}
       </Label>
@@ -41,7 +41,7 @@ export const State: React.FC<
 
           return (
             <Select onValueChange={(val) => onChange(val)} value={controlledValue?.value}>
-              <SelectTrigger className="w-full" id={name}>
+              <SelectTrigger className="mt-2 h-12 w-full rounded-xl text-base md:h-14" id={name}>
                 <SelectValue placeholder={label} />
               </SelectTrigger>
               <SelectContent>

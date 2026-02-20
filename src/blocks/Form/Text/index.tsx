@@ -21,11 +21,17 @@ export const Text: React.FC<
 
         {required && (
           <span className="required">
-            * <span className="sr-only">(required)</span>
+            * <span className="sr-only">(requis)</span>
           </span>
         )}
       </Label>
-      <Input defaultValue={defaultValue} id={name} type="text" {...register(name, { required })} />
+      <Input
+        className="mt-2 h-12 rounded-xl text-base md:h-14"
+        defaultValue={defaultValue}
+        id={name}
+        type="text"
+        {...register(name, { required })}
+      />
       {errors[name] && <Error name={name} />}
     </Width>
   )

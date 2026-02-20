@@ -22,12 +22,13 @@ export const Textarea: React.FC<
 
         {required && (
           <span className="required">
-            * <span className="sr-only">(required)</span>
+            * <span className="sr-only">(requis)</span>
           </span>
         )}
       </Label>
 
       <TextAreaComponent
+        className="mt-2 min-h-36 rounded-xl text-base"
         defaultValue={defaultValue}
         id={name}
         rows={rows}
