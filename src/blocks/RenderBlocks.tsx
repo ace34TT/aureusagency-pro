@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import type { Achievement, Page, Post } from '@/payload-types'
+import type { Achievement, Global, Page, Post } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
@@ -17,6 +17,7 @@ import AchievementList from '@/blocks/AchievementList/Component'
 import { SplitSection } from '@/blocks/SplitSection/Component'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CodeBlock } from '@/blocks/Code/Component'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -36,11 +37,17 @@ const blockComponents = {
   code: CodeBlock,
 }
 
-export const RenderBlocks: React.FC<{
+export const RenderBlocks = async ({
+  blocks,
+  searchParams,
+}: {
   blocks: (Page['layout'][0] | Post['layout'][0] | Achievement['layout'][0])[]
   searchParams?: { [key: string]: string | string[] | undefined }
-}> = (props) => {
-  const { blocks, searchParams } = props
+}) => {
+  const hasFormBlock = blocks?.some((block) => block.blockType === 'formBlock')
+  const globalData = hasFormBlock
+    ? ((await getCachedGlobal('global', 1)()) as Global)
+    : undefined
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
@@ -54,10 +61,16 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType as keyof typeof blockComponents]
 
             if (Block) {
+              const extraProps = blockType === 'formBlock' ? { globalData } : undefined
               return (
                 <div className="" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer searchParams={searchParams} />
+                  <Block
+                    {...block}
+                    {...extraProps}
+                    disableInnerContainer
+                    searchParams={searchParams}
+                  />
                 </div>
               )
             }
