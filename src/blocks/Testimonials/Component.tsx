@@ -34,7 +34,7 @@ export const Testimonials = ({
   testimonials,
 }: TestimonialsProps) => {
   return (
-    <BlockWrapper className="relative px-6 py-24 overflow-hidden">
+    <BlockWrapper className="">
       {/* Masque de transition pour éviter le rude cut et fondre les bulles */}
       <div
         className="absolute inset-0 z-20 pointer-events-none"
@@ -54,19 +54,19 @@ export const Testimonials = ({
       <div className="relative mx-auto container z-30">
         <div className="text-center max-w-3xl mx-auto">
           {/* Badge identique au Process */}
-          <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>
+          <p className={`text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] ${theme.inkSoft}`}>
             {tagline || 'Témoignages'}
           </p>
           {/* Titre identique au Process (Marcellus) */}
-          <div className="mt-4 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
+          <div className="mt-4 text-2xl sm:text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
             {richHeadline && <RichText data={richHeadline} enableGutter={false} />}
           </div>
-          <div className={`mt-4 text-base ${theme.inkMuted}`}>
+          <div className={`mt-4 text-sm sm:text-base ${theme.inkMuted}`}>
             {richDescription && <RichText data={richDescription} enableGutter={false} />}
           </div>
         </div>
 
-        <div className="mt-16 max-w-5xl mx-auto bg-white/80 backdrop-blur-sm rounded-[40px] px-6 py-12 md:p-16 border border-[#0F172A]/10 shadow-[0_20px_60px_rgba(15,23,42,0.1)] relative">
+        <div className="mt-10 sm:mt-12 lg:mt-16 max-w-5xl mx-auto bg-white/80 backdrop-blur-sm rounded-[28px] sm:rounded-[36px] lg:rounded-[40px] px-5 sm:px-6 py-8 sm:py-10 md:p-12 lg:p-16 border border-[#0F172A]/10 shadow-[0_20px_60px_rgba(15,23,42,0.1)] relative">
           <Swiper
             modules={[Autoplay, Pagination, EffectFade, Navigation]}
             effect="fade"
@@ -79,26 +79,27 @@ export const Testimonials = ({
               dynamicBullets: true,
             }}
             navigation={true}
-            className="testimonial-swiper pb-12! px-4!"
+            className="testimonial-swiper pb-10! sm:pb-12! px-2 sm:px-4!"
           >
             {(testimonials || []).map((t, index) => (
               <SwiperSlide key={t.id || index}>
                 <div className="flex flex-col items-center text-center cursor-grab">
                   {/* Icône Quote stylisée */}
-                  <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary shadow-sm border border-primary/10">
-                    <Quote size={28} />
+                  <div className="mb-6 sm:mb-8 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary shadow-sm border border-primary/10">
+                    <Quote size={24} className="sm:hidden" />
+                    <Quote size={28} className="hidden sm:block" />
                   </div>
 
                   {/* Contenu */}
-                  <div className="font-sans italic text-xl md:text-2xl leading-relaxed text-[#0F172A] max-w-3xl mx-auto">
+                  <div className="font-sans italic text-base sm:text-lg md:text-2xl leading-relaxed text-[#0F172A] max-w-3xl mx-auto">
                     &quot;{t.quote}&quot;
                   </div>
 
-                  <div className="mt-8">
-                    <h4 className="text-lg font-semibold text-[#0F172A] tracking-tight">
+                  <div className="mt-6 sm:mt-8">
+                    <h4 className="text-base sm:text-lg font-semibold text-[#0F172A] tracking-tight">
                       {t.authorName}
                     </h4>
-                    <p className={`mt-2 text-xs uppercase tracking-[0.2em] font-bold text-primary`}>
+                    <p className="mt-2 text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] font-bold text-primary">
                       {t.authorRole}
                     </p>
                   </div>
