@@ -58,7 +58,9 @@ export const BlogList = async (
 
   return (
     <BlockWrapper
-      className={`relative px-6 ${mode === 'all' ? 'pt-0 pb-24' : 'py-24'} overflow-hidden`}
+      className={`relative px-5 sm:px-6 lg:px-8 ${
+        mode === 'all' ? 'pt-0 pb-16 sm:pb-20 lg:pb-24' : 'py-16 sm:py-20 lg:py-24'
+      } overflow-hidden`}
     >
       {/* Background Decor matching WorkShowcase */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -68,29 +70,31 @@ export const BlogList = async (
 
       <div className="relative mx-auto container z-10">
         {/* Header */}
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-10 sm:mb-14 lg:mb-16 max-w-2xl text-center lg:text-left">
           {mode === 'latest' && (
-            <div className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft} mb-4`}>
+            <div
+              className={`text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] ${theme.inkSoft} mb-3 sm:mb-4`}
+            >
               {/* Optional Tagline if we had one, or just static 'Blog' */}
               BLOG
             </div>
           )}
 
-          <div className="text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight mb-6">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight mb-4 sm:mb-6">
             {title && <RichText data={title} enableGutter={false} />}
           </div>
-          <div className={`text-base ${theme.inkMuted}`}>
+          <div className={`text-sm sm:text-base ${theme.inkMuted}`}>
             {description && <RichText data={description} enableGutter={false} />}
           </div>
         </div>
 
         {/* Tag Filter */}
         {mode === 'all' && tags.docs.length > 0 && (
-          <div className="flex flex-wrap gap-3 mb-12">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 justify-center lg:justify-start">
             <Link
               href="?"
               scroll={false}
-              className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all border ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[0.65rem] sm:text-xs font-medium uppercase tracking-wider transition-all border ${
                 !activeTagSlug
                   ? 'bg-[#0F172A] text-white border-[#0F172A]'
                   : 'bg-transparent text-[#0F172A]/60 border-[#0F172A]/10 hover:border-[#0F172A]/30'
@@ -103,7 +107,7 @@ export const BlogList = async (
                 key={tag.id}
                 href={`?tag=${tag.slug}`}
                 scroll={false}
-                className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all border ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[0.65rem] sm:text-xs font-medium uppercase tracking-wider transition-all border ${
                   activeTagSlug === tag.slug
                     ? 'bg-[#0F172A] text-white border-[#0F172A]'
                     : 'bg-transparent text-[#0F172A]/60 border-[#0F172A]/10 hover:border-[#0F172A]/30'
@@ -116,19 +120,19 @@ export const BlogList = async (
         )}
 
         {/* Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.docs.length > 0 ? (
             posts.docs.map((post) => {
               const { slug, title, meta, publishedAt, tags } = post
               const href = `/posts/${slug}`
               return (
                 <Link href={href} key={post.id} className="group block h-full">
-                  <article className="flex flex-col h-full rounded-[28px] border border-[#0F172A]/10 bg-white/80 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.1)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
+                  <article className="flex flex-col h-full rounded-[24px] sm:rounded-[28px] border border-[#0F172A]/10 bg-white/80 p-5 sm:p-6 shadow-[0_20px_60px_rgba(15,23,42,0.1)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
                     {/* Decorative light blob on hover */}
                     <div className="absolute -right-10 top-0 h-24 w-24 rounded-full bg-[#9AD5CA]/30 blur-2xl transition opacity-0 group-hover:opacity-100" />
                     <div className="relative z-10 flex flex-col h-full">
                       {/* Image */}
-                      <div className="relative aspect-16/10 overflow-hidden rounded-xl bg-slate-100 mb-6">
+                      <div className="relative aspect-16/10 overflow-hidden rounded-xl bg-slate-100 mb-4 sm:mb-6">
                         {meta?.image && typeof meta.image !== 'string' && (
                           <Media
                             resource={meta.image}
@@ -142,7 +146,7 @@ export const BlogList = async (
                       {/* Content */}
                       <div className="flex flex-col flex-1">
                         {/* Date & Tags */}
-                        <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-[#0F172A]/60 mb-3">
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#0F172A]/60 mb-2 sm:mb-3">
                           {publishedAt && (
                             <time dateTime={publishedAt} className="shrink-0">
                               {new Date(publishedAt).toLocaleDateString('fr-FR', {
@@ -154,11 +158,11 @@ export const BlogList = async (
                           )}
                         </div>
 
-                        <h3 className="text-xl font-(--font-marcellus) text-[#0F172A] mb-3 leading-tight group-hover:text-primary transition-colors">
+                        <h3 className="text-lg sm:text-xl font-(--font-marcellus) text-[#0F172A] mb-3 leading-tight group-hover:text-primary transition-colors">
                           {title}
                         </h3>
 
-                        <p className={`line-clamp-3 mb-6 flex-1 text-sm ${theme.inkMuted}`}>
+                        <p className={`line-clamp-3 mb-5 sm:mb-6 flex-1 text-sm ${theme.inkMuted}`}>
                           {meta?.description}
                         </p>
 
@@ -187,8 +191,8 @@ export const BlogList = async (
             })
           ) : (
             <div className="col-span-full">
-              <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 rounded-[32px] border border-[#0F172A]/10 bg-white/80 px-8 py-12 text-center shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:flex-row md:text-left">
-                <div className="w-full max-w-[320px] shrink-0">
+              <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 sm:gap-8 rounded-[28px] sm:rounded-[32px] border border-[#0F172A]/10 bg-white/80 px-6 sm:px-8 py-10 sm:py-12 text-center shadow-[0_20px_60px_rgba(15,23,42,0.08)] md:flex-row md:text-left">
+                <div className="w-full max-w-[240px] sm:max-w-[320px] shrink-0">
                   <img
                     src="/undraw_void_wez2.png"
                     alt="Aucun article trouvé"
@@ -196,10 +200,10 @@ export const BlogList = async (
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs uppercase tracking-[0.35em] text-[#0F172A]/50">
+                  <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] text-[#0F172A]/50">
                     Aucun résultat
                   </p>
-                  <h3 className="mt-3 text-2xl font-(--font-marcellus) text-[#0F172A]">
+                  <h3 className="mt-3 text-xl sm:text-2xl font-(--font-marcellus) text-[#0F172A]">
                     Aucun article trouvé pour ce filtre
                   </h3>
                   <p className={`mt-3 text-sm ${theme.inkMuted}`}>
@@ -209,7 +213,7 @@ export const BlogList = async (
                     <Link
                       href="?"
                       scroll={false}
-                      className="inline-flex items-center gap-2 rounded-full border border-[#0F172A] px-5 py-2 text-xs font-medium uppercase tracking-wider text-[#0F172A] transition-colors hover:bg-[#0F172A] hover:text-white"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#0F172A] px-4 sm:px-5 py-2 text-[0.65rem] sm:text-xs font-medium uppercase tracking-wider text-[#0F172A] transition-colors hover:bg-[#0F172A] hover:text-white"
                     >
                       Voir tous les articles
                     </Link>
