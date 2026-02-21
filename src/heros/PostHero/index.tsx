@@ -40,7 +40,8 @@ export const PostHero: React.FC<{
         {heroImage && typeof heroImage !== 'string' && (
           <Media fill priority imgClassName="object-cover" resource={heroImage} />
         )}
-        <div className="backdrop-blur-xs shadow-2xl rounded-3xl p-8 md:p-12 w-full mx-auto">
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="relative z-10 backdrop-blur-xs shadow-2xl rounded-3xl p-8 md:p-12 w-full mx-auto">
           <Link
             href="/posts"
             className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-primary transition-colors mb-8"
