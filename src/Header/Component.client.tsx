@@ -84,7 +84,12 @@ const MobileMenu: FC<{
           <div className="grow overflow-y-auto">
             <ul className="flex flex-col ">
               {menus.map(({ link }) => {
-                const href = link.url ?? '#'
+                const href =
+                  link.type === 'reference'
+                    ? typeof link.reference?.value === 'object'
+                      ? `/${link.reference.value.slug}`
+                      : '#'
+                    : (link.url ?? '#')
                 const isActive = activeSegment === getPathSegment(href)
 
                 return (
