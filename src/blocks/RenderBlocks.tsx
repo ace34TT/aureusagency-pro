@@ -17,6 +17,13 @@ import AchievementList from '@/blocks/AchievementList/Component'
 import { SplitSection } from '@/blocks/SplitSection/Component'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CodeBlock } from '@/blocks/Code/Component'
+import { QuoteBlock } from '@/blocks/Quote/Component'
+import { AlertBlock } from '@/blocks/Alert/Component'
+import { AuthorSectionBlock } from '@/blocks/AuthorSection/Component'
+import { AchievementOverviewBlock } from '@/blocks/AchievementOverview/Component'
+import { ChallengeSolutionBlock } from '@/blocks/ChallengeSolution/Component'
+import { VisualShowcaseBlock } from '@/blocks/VisualShowcase/Component'
+import { ResultsBlock } from '@/blocks/Results/Component'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
 const blockComponents = {
@@ -35,6 +42,13 @@ const blockComponents = {
   splitSection: SplitSection,
   banner: BannerBlock,
   code: CodeBlock,
+  quote: QuoteBlock,
+  alert: AlertBlock,
+  authorSection: AuthorSectionBlock,
+  achievementOverview: AchievementOverviewBlock,
+  challengeSolution: ChallengeSolutionBlock,
+  visualShowcase: VisualShowcaseBlock,
+  results: ResultsBlock,
 }
 
 export const RenderBlocks = async ({

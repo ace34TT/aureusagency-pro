@@ -302,7 +302,16 @@ export interface Post {
   id: string;
   title: string;
   heroImage?: (string | null) | Media;
-  layout: (BannerBlock | CodeBlock | MediaBlock | MarqueeBlock)[];
+  layout: (
+    | BannerBlock
+    | CodeBlock
+    | MediaBlock
+    | MarqueeBlock
+    | QuoteBlock
+    | AlertBlock
+    | AuthorSectionBlock
+    | CallToActionBlock
+  )[];
   relatedPosts?: (string | Post)[] | null;
   tags?: (string | Tag)[] | null;
   categories?: (string | Category)[] | null;
@@ -518,68 +527,89 @@ export interface MarqueeBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
+ * via the `definition` "QuoteBlock".
  */
-export interface Tag {
-  id: string;
-  name: string;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  updatedAt: string;
-  createdAt: string;
+export interface QuoteBlock {
+  quote: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  author?: string | null;
+  role?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'quote';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
+ * via the `definition` "AlertBlock".
  */
-export interface Category {
-  id: string;
-  title: string;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  parent?: (string | null) | Category;
-  breadcrumbs?:
+export interface AlertBlock {
+  type: 'info' | 'warning' | 'success' | 'expert';
+  title?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'alert';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AuthorSectionBlock".
+ */
+export interface AuthorSectionBlock {
+  photo: string | Media;
+  name: string;
+  role: string;
+  bio: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  socialLinks?:
     | {
-        doc?: (string | null) | Category;
-        url?: string | null;
-        label?: string | null;
+        platform: 'linkedin' | 'twitter' | 'github' | 'website';
+        url: string;
         id?: string | null;
       }[]
     | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: string;
-  name?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-  collection: 'users';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'authorSection';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -646,6 +676,71 @@ export interface CallToActionBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: string;
+  name: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: string;
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  parent?: (string | null) | Category;
+  breadcrumbs?:
+    | {
+        doc?: (string | null) | Category;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: string;
+  name?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'users';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1258,7 +1353,17 @@ export interface Achievement {
   title: string;
   heroImage: string | Media;
   projectLink?: string | null;
-  layout: (BannerBlock | CodeBlock | MediaBlock)[];
+  layout: (
+    | BannerBlock
+    | CodeBlock
+    | MediaBlock
+    | AchievementOverviewBlock
+    | ChallengeSolutionBlock
+    | VisualShowcaseBlock
+    | ResultsBlock
+    | TestimonialsBlock
+    | FormBlock
+  )[];
   relatedAchievements?: (string | Achievement)[] | null;
   tags?: (string | Tag)[] | null;
   meta?: {
@@ -1285,6 +1390,102 @@ export interface Achievement {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AchievementOverviewBlock".
+ */
+export interface AchievementOverviewBlock {
+  /**
+   * Logo du client pour affichage dans la section aperçu.
+   */
+  clientLogo: string | Media;
+  year: string;
+  role: string;
+  industry: string;
+  stack: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'achievementOverview';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ChallengeSolutionBlock".
+ */
+export interface ChallengeSolutionBlock {
+  challengeTitle: string;
+  challenge: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  solutionTitle: string;
+  solution: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'challengeSolution';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VisualShowcaseBlock".
+ */
+export interface VisualShowcaseBlock {
+  type: 'images' | 'threejs';
+  images?:
+    | {
+        image: string | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  threejsUrl?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'visualShowcase';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ResultsBlock".
+ */
+export interface ResultsBlock {
+  title: string;
+  kpis?:
+    | {
+        /**
+         * Le chiffre clé percutant
+         */
+        stat: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'results';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1869,6 +2070,10 @@ export interface PostsSelect<T extends boolean = true> {
         code?: T | CodeBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         marquee?: T | MarqueeBlockSelect<T>;
+        quote?: T | QuoteBlockSelect<T>;
+        alert?: T | AlertBlockSelect<T>;
+        authorSection?: T | AuthorSectionBlockSelect<T>;
+        cta?: T | CallToActionBlockSelect<T>;
       };
   relatedPosts?: T;
   tags?: T;
@@ -1917,6 +2122,47 @@ export interface CodeBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QuoteBlock_select".
+ */
+export interface QuoteBlockSelect<T extends boolean = true> {
+  quote?: T;
+  author?: T;
+  role?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AlertBlock_select".
+ */
+export interface AlertBlockSelect<T extends boolean = true> {
+  type?: T;
+  title?: T;
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AuthorSectionBlock_select".
+ */
+export interface AuthorSectionBlockSelect<T extends boolean = true> {
+  photo?: T;
+  name?: T;
+  role?: T;
+  bio?: T;
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "achievements_select".
  */
 export interface AchievementsSelect<T extends boolean = true> {
@@ -1929,6 +2175,12 @@ export interface AchievementsSelect<T extends boolean = true> {
         banner?: T | BannerBlockSelect<T>;
         code?: T | CodeBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
+        achievementOverview?: T | AchievementOverviewBlockSelect<T>;
+        challengeSolution?: T | ChallengeSolutionBlockSelect<T>;
+        visualShowcase?: T | VisualShowcaseBlockSelect<T>;
+        results?: T | ResultsBlockSelect<T>;
+        testimonials?: T | TestimonialsBlockSelect<T>;
+        formBlock?: T | FormBlockSelect<T>;
       };
   relatedAchievements?: T;
   tags?: T;
@@ -1952,6 +2204,64 @@ export interface AchievementsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AchievementOverviewBlock_select".
+ */
+export interface AchievementOverviewBlockSelect<T extends boolean = true> {
+  clientLogo?: T;
+  year?: T;
+  role?: T;
+  industry?: T;
+  stack?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ChallengeSolutionBlock_select".
+ */
+export interface ChallengeSolutionBlockSelect<T extends boolean = true> {
+  challengeTitle?: T;
+  challenge?: T;
+  solutionTitle?: T;
+  solution?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VisualShowcaseBlock_select".
+ */
+export interface VisualShowcaseBlockSelect<T extends boolean = true> {
+  type?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  threejsUrl?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ResultsBlock_select".
+ */
+export interface ResultsBlockSelect<T extends boolean = true> {
+  title?: T;
+  kpis?:
+    | T
+    | {
+        stat?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

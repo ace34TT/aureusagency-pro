@@ -12,6 +12,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { TableOfContents } from '@/components/TableOfContents'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -63,14 +64,19 @@ export default async function Post({ params: paramsPromise }: Args) {
       <PostHero post={post} />
 
       <div className="flex flex-col items-center gap-4 pt-8">
-        <div className="container mx-auto">
-          {/*<RenderBlocks blocks={post.layout} />*/}
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
-              className="mt-12 max-w-208 lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-            />
-          )}
+        <div className="container mx-auto grid lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-1 hidden lg:block">
+            <TableOfContents />
+          </div>
+          <div className="lg:col-span-3">
+            <RenderBlocks blocks={post.layout} />
+            {post.relatedPosts && post.relatedPosts.length > 0 && (
+              <RelatedPosts
+                className="mt-12 max-w-208 lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
+                docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+              />
+            )}
+          </div>
         </div>
       </div>
     </article>

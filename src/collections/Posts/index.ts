@@ -9,6 +9,10 @@ import { MarqueeBlock } from '@/blocks/Marquee/config'
 // import { RichText } from '@/blocks/RichText/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
+import { Quote } from '@/blocks/Quote/config'
+import { Alert } from '@/blocks/Alert/config'
+import { AuthorSection } from '@/blocks/AuthorSection/config'
+import { CallToAction } from '@/blocks/CallToAction/config'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
 import {
@@ -77,7 +81,16 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Banner, Code, MediaBlock, MarqueeBlock],
+              blocks: [
+                Banner,
+                Code,
+                MediaBlock,
+                MarqueeBlock,
+                Quote,
+                Alert,
+                AuthorSection,
+                CallToAction,
+              ],
               required: true,
             },
           ],

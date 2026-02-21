@@ -7,6 +7,12 @@ import { Code } from '@/blocks/Code/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { populateAuthors } from '../Posts/hooks/populateAuthors'
+import { AchievementOverview } from '@/blocks/AchievementOverview/config'
+import { ChallengeSolution } from '@/blocks/ChallengeSolution/config'
+import { VisualShowcase } from '@/blocks/VisualShowcase/config'
+import { Results } from '@/blocks/Results/config'
+import { Testimonials } from '@/blocks/Testimonials/config'
+import { FormBlock } from '@/blocks/Form/config'
 import { revalidateDelete, revalidateAchievement } from './hooks/revalidateAchievement'
 
 import {
@@ -77,7 +83,17 @@ export const Achievements: CollectionConfig<'achievements'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Banner, Code, MediaBlock],
+              blocks: [
+                Banner,
+                Code,
+                MediaBlock,
+                AchievementOverview,
+                ChallengeSolution,
+                VisualShowcase,
+                Results,
+                Testimonials,
+                FormBlock,
+              ],
               required: true,
             },
           ],
