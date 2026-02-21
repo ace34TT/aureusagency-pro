@@ -7,6 +7,7 @@ import { Quote } from 'lucide-react'
 import { theme } from '@/utilities/theme'
 import type { Media } from '@/payload-types'
 import RichText from '@/components/RichText'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -33,7 +34,7 @@ export const Testimonials = ({
   testimonials,
 }: TestimonialsProps) => {
   return (
-    <section className="relative px-6 py-24 overflow-hidden">
+    <BlockWrapper className="relative px-6 py-24 overflow-hidden">
       {/* Masque de transition pour éviter le rude cut et fondre les bulles */}
       <div
         className="absolute inset-0 z-20 pointer-events-none"
@@ -142,7 +143,7 @@ export const Testimonials = ({
           }
         }
       `}</style>
-    </section>
+    </BlockWrapper>
   )
 }
 

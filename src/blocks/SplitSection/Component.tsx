@@ -6,6 +6,7 @@ import { CMSLink } from '@/components/Link'
 import { Media as MediaComponent } from '@/components/Media'
 import { Page, SplitSectionBlock as SplitSectionBlockProps } from '@/payload-types'
 import { Gutter } from '@payloadcms/ui'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 export const SplitSection: React.FC<SplitSectionBlockProps> = ({
   content,
@@ -15,7 +16,7 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
   title,
 }) => {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <BlockWrapper className="relative py-24 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[10%] left-[10%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -66,6 +67,6 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
           </div>
         </div>
       </Gutter>
-    </section>
+    </BlockWrapper>
   )
 }

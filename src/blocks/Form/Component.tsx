@@ -13,6 +13,7 @@ import { getClientSideURL } from '@/utilities/getURL'
 import type { Global } from '@/payload-types'
 import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 export type FormBlockType = {
   blockName?: string
@@ -121,7 +122,7 @@ export const FormBlock: React.FC<
   const { contact, socialLinks } = globalData || {}
 
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <BlockWrapper className="relative overflow-hidden py-16 md:py-24">
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-50/70 blur-[110px]" />
@@ -187,9 +188,7 @@ export const FormBlock: React.FC<
           {/* Right Column: Company Info */}
           <div className="space-y-8">
             <div className="rounded-[28px] border border-[#0F172A]/10 bg-white/90 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-              <p className="text-xs uppercase tracking-[0.35em] text-[#0F172A]/50">
-                Contact
-              </p>
+              <p className="text-xs uppercase tracking-[0.35em] text-[#0F172A]/50">Contact</p>
               <h3 className="mt-3 text-2xl font-(--font-marcellus) text-[#0F172A]">
                 Contactez-nous
               </h3>
@@ -322,6 +321,6 @@ export const FormBlock: React.FC<
           </div>
         </div>
       </div>
-    </section>
+    </BlockWrapper>
   )
 }

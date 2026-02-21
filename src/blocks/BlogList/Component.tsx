@@ -7,6 +7,7 @@ import { Media } from '@/components/Media'
 import Link from 'next/link'
 import type { BlogListBlock } from '@/payload-types'
 import { BlogPagination } from './BlogPagination'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 export const BlogList = async (
   props: BlogListBlock & {
@@ -56,7 +57,9 @@ export const BlogList = async (
   })
 
   return (
-    <section className={`relative px-6 ${mode === 'all' ? 'pt-0 pb-24' : 'py-24'} overflow-hidden`}>
+    <BlockWrapper
+      className={`relative px-6 ${mode === 'all' ? 'pt-0 pb-24' : 'py-24'} overflow-hidden`}
+    >
       {/* Background Decor matching WorkShowcase */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -221,7 +224,7 @@ export const BlogList = async (
           <BlogPagination page={page} totalPages={posts.totalPages} />
         )}
       </div>
-    </section>
+    </BlockWrapper>
   )
 }
 

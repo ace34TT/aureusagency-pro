@@ -2,10 +2,11 @@
 import React from 'react'
 import FastMarquee from 'react-fast-marquee'
 import type { MarqueeBlock as MarqueeBlockProps } from '@/payload-types'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 export const Marquee: React.FC<Partial<MarqueeBlockProps>> = (props) => {
   const { items, padding } = props
-  const speedToUse =  50
+  const speedToUse = 50
 
   const fallbackExpertise = [
     { name: 'Next.js 15' },
@@ -23,7 +24,9 @@ export const Marquee: React.FC<Partial<MarqueeBlockProps>> = (props) => {
   const content = [...dataToUse, ...dataToUse]
 
   return (
-    <section className={`relative ${ padding == 'both' && 'py-24' } ${padding === "top" && "pt-24"} ${padding === "bottom" && "pb-24"} overflow-hidden bg-white`}>
+    <BlockWrapper
+      className={`relative ${padding == 'both' && 'py-24'} ${padding === 'top' && 'pt-24'} ${padding === 'bottom' && 'pb-24'} overflow-hidden bg-white`}
+    >
       <div
         className="relative w-full"
         style={{
@@ -43,6 +46,6 @@ export const Marquee: React.FC<Partial<MarqueeBlockProps>> = (props) => {
           ))}
         </FastMarquee>
       </div>
-    </section>
+    </BlockWrapper>
   )
 }

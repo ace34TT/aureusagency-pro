@@ -45,9 +45,7 @@ export const RenderBlocks = async ({
   searchParams?: { [key: string]: string | string[] | undefined }
 }) => {
   const hasFormBlock = blocks?.some((block) => block.blockType === 'formBlock')
-  const globalData = hasFormBlock
-    ? ((await getCachedGlobal('global', 1)()) as Global)
-    : undefined
+  const globalData = hasFormBlock ? ((await getCachedGlobal('global', 1)()) as Global) : undefined
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 

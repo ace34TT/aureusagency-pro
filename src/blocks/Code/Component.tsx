@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Code } from './Component.client'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 export type CodeBlockProps = {
   code: string
@@ -14,8 +15,8 @@ type Props = CodeBlockProps & {
 
 export const CodeBlock: React.FC<Props> = ({ className, code, language }) => {
   return (
-    <div className={[className, 'not-prose'].filter(Boolean).join(' ')}>
+    <BlockWrapper className={[className, 'not-prose'].filter(Boolean).join(' ')}>
       <Code code={code} language={language} />
-    </div>
+    </BlockWrapper>
   )
 }

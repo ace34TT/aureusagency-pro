@@ -7,6 +7,7 @@ import { Media } from '@/components/Media'
 import Link from 'next/link'
 import type { AchievementListBlock } from '@/payload-types'
 import { BlogPagination } from '@/blocks/BlogList/BlogPagination' // Reuse pagination if compatible, or duplicate it. Assuming compatible or will verify.
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 export const AchievementList = async (
   props: AchievementListBlock & {
@@ -56,7 +57,7 @@ export const AchievementList = async (
   })
 
   return (
-    <section className="relative px-6 pb-24 overflow-hidden bg-white">
+    <BlockWrapper className="relative px-6 pb-24 overflow-hidden bg-white">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -200,7 +201,7 @@ export const AchievementList = async (
           <BlogPagination page={page} totalPages={achievements.totalPages} />
         )}
       </div>
-    </section>
+    </BlockWrapper>
   )
 }
 

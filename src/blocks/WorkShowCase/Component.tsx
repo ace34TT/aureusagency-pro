@@ -1,5 +1,6 @@
 import { theme } from '@/utilities/theme'
 import RichText from '@/components/RichText'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 type WorkShowcaseProps = {
   tagline?: string | null
@@ -16,7 +17,7 @@ type WorkShowcaseProps = {
 
 const WorkShowcase = ({ tagline, richHeadline, richDescription, projects }: WorkShowcaseProps) => {
   return (
-    <section id="work" className={`relative px-6 py-24 overflow-hidden`}>
+    <BlockWrapper id="work" className={`relative px-6 py-24 overflow-hidden`}>
       {/* Cercles en arrière-plan (Coherents avec le reste du site) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[10%] h-125 w-125 rounded-full bg-amber-50/40 blur-[120px]" />
@@ -52,7 +53,7 @@ const WorkShowcase = ({ tagline, richHeadline, richDescription, projects }: Work
           ))}
         </div>
       </div>
-    </section>
+    </BlockWrapper>
   )
 }
 

@@ -1,6 +1,7 @@
 import { theme } from '@/utilities/theme'
 import RichText from '@/components/RichText'
 import React from 'react'
+import { BlockWrapper } from '@/components/BlockWrapper'
 
 type ServiceProps = {
   tagline?: string | null
@@ -15,7 +16,7 @@ type ServiceProps = {
 
 const Services = ({ tagline, richHeadline, richDescription, services }: ServiceProps) => {
   return (
-    <section className={`relative px-6 py-24 overflow-hidden`}>
+    <BlockWrapper className={`relative px-6 py-24 overflow-hidden`}>
       {/* Cercles en arrière-plan (Coherents avec le reste du site) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[10%] -left-[5%] h-125 w-125 rounded-full bg-purple-50/50 blur-[120px]" />
@@ -61,7 +62,7 @@ const Services = ({ tagline, richHeadline, richDescription, services }: ServiceP
           </div>
         </div>
       </div>
-    </section>
+    </BlockWrapper>
   )
 }
 
