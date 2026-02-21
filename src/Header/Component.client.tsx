@@ -61,7 +61,7 @@ const MobileMenu: FC<{
           {/* Mobile Menu Header */}
           <div className="flex justify-between items-center p-6 border-b border-[#0F172A]/10">
             {logoUrl ? (
-              <div className="relative w-25 h-6">
+              <div className="relative w-12 h-12">
                 <Image
                   src={logoUrl}
                   alt="Logo"
@@ -231,12 +231,12 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     <>
       <nav
         className={cn(
-          'w-full h-16 md:h-24 flex items-center fixed top-0 left-0 right-0 z-999 transition-all duration-300 ease-in-out font-[Roboto]',
+          'w-full h-20 md:h-20 lg:h-24 flex items-center fixed top-0 left-0 right-0 z-999 transition-all duration-300 ease-in-out font-[Roboto]',
           isScrolled ? 'bg-[#13233C80] border-white backdrop-blur-md' : '',
         )}
       >
-        <div className="container mx-auto px-4 md:px-0">
-          <div className="w-full flex items-center justify-between h-16 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-0">
+          <div className="w-full flex items-center justify-between h-20 md:h-20 lg:h-24 relative">
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center w-full">
               {/* Left Logo */}
@@ -274,10 +274,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </div>
 
             {/* Mobile Logo (visible only on mobile) */}
-            <div className="flex lg:hidden  left-0">
+            <div className="flex lg:hidden left-0">
               <Link href="/" className="flex items-center">
                 {logoUrl ? (
-                  <div className="relative w-24 h-24">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20">
                     <Image
                       src={logoUrl}
                       alt="Logo"
@@ -296,12 +296,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               onClick={toggleMenu}
               aria-label={localIsMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={localIsMenuOpen}
-              className="flex lg:hidden right-0 text-white hover:text-blue-300 transition-colors duration-300 cursor-pointer"
+              className={cn(
+                'mt-1 flex lg:hidden right-0 transition-colors duration-300 cursor-pointer md:mt-0',
+                isScrolled ? 'text-white hover:text-blue-200' : 'text-[#0F172A] hover:text-primary',
+              )}
             >
               {localIsMenuOpen ? (
-                <RiCloseLargeLine size={24} aria-hidden="true" />
+                <RiCloseLargeLine size={30} aria-hidden="true" />
               ) : (
-                <GiHamburgerMenu size={24} aria-hidden="true" />
+                <GiHamburgerMenu size={30} aria-hidden="true" />
               )}
             </button>
           </div>
