@@ -57,7 +57,7 @@ export const AchievementList = async (
   })
 
   return (
-    <BlockWrapper className="relative px-5 sm:px-6 lg:px-8 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
+    <BlockWrapper className="relative px-5 sm:px-6 lg:px-8 pb-8 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -107,7 +107,7 @@ export const AchievementList = async (
         )}
 
         {/* Grid */}
-        <div className="grid gap-x-6 lg:gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-6 lg:gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {achievements.docs.length > 0 ? (
             achievements.docs.map((achievement) => {
               const { slug, title, heroImage, publishedAt, tags } = achievement
@@ -168,12 +168,12 @@ export const AchievementList = async (
                         {title}
                       </h3>
 
-                      {/* Description or content - Achievements might not have 'meta.description' populated same way as posts if not using SEO plugin fully or if it's different. 
+                      {/* Description or content - Achievements might not have 'meta.description' populated same way as posts if not using SEO plugin fully or if it's different.
                           Based on schema, we have 'content'. Extracting excerpt would be hard.
                           Since we removed 'meta' usage in step 299 where we reused 'meta' but maybe achievements don't populate 'meta.description' in cards well?
                           Let's assume 'meta.description' exists if SEO plugin is used.
                        */}
-                      {/* 
+                      {/*
                       <p className="text-slate-600 line-clamp-3 mb-6 flex-1 text-sm leading-relaxed">
                         {meta?.description}
                       </p>
