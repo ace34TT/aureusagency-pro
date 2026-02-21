@@ -122,15 +122,15 @@ export const FormBlock: React.FC<
   const { contact, socialLinks } = globalData || {}
 
   return (
-    <BlockWrapper className="relative overflow-hidden py-16 md:py-24">
+    <BlockWrapper className="relative overflow-hidden py-12 sm:py-16 lg:py-24 px-5 sm:px-6 lg:px-0">
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-50/70 blur-[110px]" />
         <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-purple-50/70 blur-[120px]" />
       </div>
 
-      <div className="container relative mx-auto px-4 lg:px-8">
-        <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+      <div className="container relative mx-auto px-0 lg:px-8">
+        <div className="grid items-start gap-10 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           {/* Left Column: Form */}
           <div>
             {enableIntro && introContent && !hasSubmitted && (
@@ -139,8 +139,8 @@ export const FormBlock: React.FC<
               </div>
             )}
 
-            <div className="rounded-4xl border border-[#0F172A]/10 bg-white/90 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.1)] backdrop-blur md:p-8">
-              <h2 className="mb-6 text-2xl font-(--font-marcellus) text-[#0F172A]">
+            <div className="rounded-4xl border border-[#0F172A]/10 bg-white/90 p-5 sm:p-6 md:p-8 shadow-[0_24px_70px_rgba(15,23,42,0.1)] backdrop-blur">
+              <h2 className="mb-5 sm:mb-6 text-xl sm:text-2xl font-(--font-marcellus) text-[#0F172A]">
                 Parlez-nous de votre projet
               </h2>
               <FormProvider {...formMethods}>
@@ -151,7 +151,7 @@ export const FormBlock: React.FC<
                 {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
                 {!hasSubmitted && (
                   <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-                    <div className="mb-6 space-y-6">
+                    <div className="mb-5 sm:mb-6 space-y-5 sm:space-y-6">
                       {formFromProps &&
                         formFromProps.fields &&
                         formFromProps.fields?.map((field, index) => {
@@ -187,9 +187,11 @@ export const FormBlock: React.FC<
 
           {/* Right Column: Company Info */}
           <div className="space-y-8">
-            <div className="rounded-[28px] border border-[#0F172A]/10 bg-white/90 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-              <p className="text-xs uppercase tracking-[0.35em] text-[#0F172A]/50">Contact</p>
-              <h3 className="mt-3 text-2xl font-(--font-marcellus) text-[#0F172A]">
+            <div className="rounded-[24px] sm:rounded-[28px] border border-[#0F172A]/10 bg-white/90 p-6 sm:p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+              <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] text-[#0F172A]/50">
+                Contact
+              </p>
+              <h3 className="mt-3 text-xl sm:text-2xl font-(--font-marcellus) text-[#0F172A]">
                 Contactez-nous
               </h3>
               <p className="mt-3 text-sm text-slate-600 leading-relaxed">
@@ -197,12 +199,12 @@ export const FormBlock: React.FC<
                 pour toute question ou demande de devis.
               </p>
 
-              <div className="mt-8 flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start">
+              <div className="mt-6 sm:mt-8 flex flex-col gap-8 sm:gap-10 md:grid md:grid-cols-2 md:items-start">
                 {contact && (
                   <div className="space-y-6">
                     {contact.email && (
                       <div className="flex items-start gap-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -232,7 +234,7 @@ export const FormBlock: React.FC<
 
                     {contact.phone && (
                       <div className="flex items-start gap-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -261,7 +263,7 @@ export const FormBlock: React.FC<
 
                     {contact.address && (
                       <div className="flex items-start gap-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -307,7 +309,7 @@ export const FormBlock: React.FC<
                             key={i}
                             href={url}
                             target="_blank"
-                            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0F172A]/10 bg-white text-slate-600 transition-all hover:border-primary hover:bg-primary hover:text-white"
+                            className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#0F172A]/10 bg-white text-slate-600 transition-all hover:border-primary hover:bg-primary hover:text-white"
                           >
                             <Icon />
                           </Link>

@@ -185,7 +185,7 @@ export async function Footer() {
         <div className="flex flex-col lg:flex-row lg:justify-between gap-10 sm:gap-12 mb-10 sm:mb-12">
           <div className="flex flex-col md:flex-row gap-8 sm:gap-10 items-start max-w-3xl">
             {logo && (
-              <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-48 lg:h-48 shrink-0">
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-48 lg:h-48 shrink-0 mx-auto md:mx-0">
                 <Image
                   src={logoUrl}
                   alt={''}
@@ -195,7 +195,7 @@ export async function Footer() {
                 />
               </div>
             )}
-            <div className="space-y-6 pt-0 sm:pt-2 max-w-sm">
+            <div className="space-y-6 pt-0 sm:pt-2 max-w-sm text-center md:text-left mx-auto md:mx-0">
               <div className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 Une agence dédiée à l&apos;excellence digitale et à la performance mesurable.
               </div>
