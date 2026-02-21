@@ -57,7 +57,7 @@ export const AchievementList = async (
   })
 
   return (
-    <BlockWrapper className="relative px-6 pb-24 overflow-hidden bg-white">
+    <BlockWrapper className="relative px-5 sm:px-6 lg:px-8 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -66,22 +66,22 @@ export const AchievementList = async (
 
       <div className="relative mx-auto container z-10">
         {/* Header */}
-        <div className="mb-16 max-w-2xl">
-          <div className="text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight mb-6">
+        <div className="mb-10 sm:mb-14 lg:mb-16 max-w-2xl text-center lg:text-left">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight mb-4 sm:mb-6">
             {title && <RichText data={title} enableGutter={false} />}
           </div>
-          <div className={`text-lg ${theme.inkMuted}`}>
+          <div className={`text-sm sm:text-base md:text-lg ${theme.inkMuted}`}>
             {description && <RichText data={description} enableGutter={false} />}
           </div>
         </div>
 
         {/* Tag Filter */}
         {mode === 'all' && tags.docs.length > 0 && (
-          <div className="flex flex-wrap gap-3 mb-12">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 justify-center lg:justify-start">
             <Link
               href="?"
               scroll={false}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                 !activeTagSlug
                   ? 'bg-primary text-white shadow-md'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -94,7 +94,7 @@ export const AchievementList = async (
                 key={tag.id}
                 href={`?tag=${tag.slug}`}
                 scroll={false}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                   activeTagSlug === tag.slug
                     ? 'bg-primary text-white shadow-md'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -107,7 +107,7 @@ export const AchievementList = async (
         )}
 
         {/* Grid */}
-        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-6 lg:gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {achievements.docs.length > 0 ? (
             achievements.docs.map((achievement) => {
               const { slug, title, heroImage, publishedAt, tags } = achievement
@@ -132,9 +132,9 @@ export const AchievementList = async (
                     </div>
 
                     {/* Content */}
-                    <div className="flex flex-col flex-1 p-8">
+                    <div className="flex flex-col flex-1 p-5 sm:p-6 lg:p-8">
                       {/* Date & Tags */}
-                      <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500 mb-4 uppercase tracking-wider">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[0.65rem] sm:text-xs font-medium text-slate-500 mb-3 sm:mb-4 uppercase tracking-wider">
                         {publishedAt && (
                           <time dateTime={publishedAt} className="shrink-0">
                             {new Date(publishedAt).toLocaleDateString('fr-FR', {
@@ -164,7 +164,7 @@ export const AchievementList = async (
                         )}
                       </div>
 
-                      <h3 className="text-xl font-bold text-[#0F172A] mb-3 leading-snug group-hover:text-primary transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 leading-snug group-hover:text-primary transition-colors">
                         {title}
                       </h3>
 
@@ -179,8 +179,8 @@ export const AchievementList = async (
                       </p>
                       */}
 
-                      <div className="flex items-center gap-3 pt-6 border-t border-slate-100 mt-auto">
-                        <div className="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">
+                      <div className="flex items-center gap-3 pt-5 sm:pt-6 border-t border-slate-100 mt-auto">
+                        <div className="text-[0.65rem] sm:text-xs font-semibold text-[#0F172A] uppercase tracking-wide">
                           Voir le projet
                         </div>
                         <div className="w-8 h-px bg-primary/50 group-hover:w-12 transition-all" />
