@@ -82,7 +82,7 @@ const MobileMenu: FC<{
 
           {/* Mobile Navigation Items */}
           <div className="grow overflow-y-auto">
-            <ul className="flex flex-col py-6">
+            <ul className="flex flex-col ">
               {menus.map(({ link }) => {
                 const href = link.url ?? '#'
                 const isActive = activeSegment === getPathSegment(href)
