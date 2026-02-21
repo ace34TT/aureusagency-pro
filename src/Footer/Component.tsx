@@ -174,7 +174,7 @@ export async function Footer() {
     })
 
   return (
-    <footer className="relative bg-white text-[#0F172A] py-16 px-6 overflow-hidden">
+    <footer className="relative bg-white text-[#0F172A] py-8 sm:py-16 px-5 sm:px-6 lg:px-8 overflow-hidden">
       {/* Cercles en arrière-plan (Plus subtils pour le thème clair) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[30%] -left-[10%] h-125 w-125 rounded-full bg-purple-100/50 blur-[100px]" />
@@ -182,25 +182,25 @@ export async function Footer() {
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:justify-between gap-12 mb-12">
-          <div className="flex flex-col lg:flex-row gap-10 items-start max-w-3xl">
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-10 sm:gap-12 mb-10 sm:mb-12">
+          <div className="flex flex-col md:flex-row gap-8 sm:gap-10 items-start max-w-3xl">
             {logo && (
-              <div className="relative w-48 h-48 shrink-0">
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-48 lg:h-48 shrink-0">
                 <Image
                   src={logoUrl}
                   alt={''}
                   fill
-                  sizes="192px"
+                  sizes="(min-width: 1024px) 192px, (min-width: 640px) 144px, 112px"
                   className="object-contain object-top-left"
                 />
               </div>
             )}
-            <div className="space-y-6 pt-2 max-w-sm">
-              <div className="text-slate-600 text-base leading-relaxed">
+            <div className="space-y-6 pt-0 sm:pt-2 max-w-sm">
+              <div className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 Une agence dédiée à l&apos;excellence digitale et à la performance mesurable.
               </div>
               <div>
-                <h4 className="font-(--font-marcellus) text-lg mb-3 text-[#0F172A]">
+                <h4 className="font-(--font-marcellus) text-base sm:text-lg mb-3 text-[#0F172A]">
                   Restez informé
                 </h4>
                 <NewsletterForm />
@@ -208,30 +208,34 @@ export async function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-12">
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-8 sm:gap-12">
             <div>
-              <h3 className="font-(--font-marcellus) text-lg mb-4 text-[#0F172A] uppercase tracking-wider">
+              <h3 className="font-(--font-marcellus) text-base sm:text-lg mb-3 sm:mb-4 text-[#0F172A] uppercase tracking-wider">
                 Menu
               </h3>
-              <ul className="space-y-3 text-base text-slate-600 font-medium">
+              <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-slate-600 font-medium">
                 {renderLinks(navItems || [])}
               </ul>
             </div>
             <div>
-              <h3 className="font-(--font-marcellus) text-lg mb-4 text-[#0F172A] uppercase tracking-wider">
+              <h3 className="font-(--font-marcellus) text-base sm:text-lg mb-3 sm:mb-4 text-[#0F172A] uppercase tracking-wider">
                 Légal
               </h3>
-              <ul className="space-y-3 text-sm text-slate-500">{renderLinks(legalLinks || [])}</ul>
+              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-slate-500">
+                {renderLinks(legalLinks || [])}
+              </ul>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-slate-500 text-xs uppercase tracking-[0.2em] font-medium">
+        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-slate-500 text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] font-medium text-center md:text-left">
             © {new Date().getFullYear()} Aureus Agency. Tous droits réservés.
           </div>
           {socialLinks?.length ? (
-            <ul className="flex gap-4">{renderSocialIcons(socialLinks)}</ul>
+            <ul className="flex flex-wrap justify-center md:justify-end gap-3 sm:gap-4">
+              {renderSocialIcons(socialLinks)}
+            </ul>
           ) : null}
         </div>
       </div>

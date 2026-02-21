@@ -59,7 +59,7 @@ export const BlogList = async (
   return (
     <BlockWrapper
       className={`relative px-5 sm:px-6 lg:px-8 ${
-        mode === 'all' ? 'pt-0 pb-16 sm:pb-20 lg:pb-24' : 'py-16 sm:py-20 lg:py-24'
+        mode === 'all' ? 'pt-0 pb-16 sm:pb-20 lg:pb-24' : ''
       } overflow-hidden`}
     >
       {/* Background Decor matching WorkShowcase */}
@@ -127,7 +127,7 @@ export const BlogList = async (
               const href = `/posts/${slug}`
               return (
                 <Link href={href} key={post.id} className="group block h-full">
-                  <article className="flex flex-col h-full rounded-[24px] sm:rounded-[28px] border border-[#0F172A]/10 bg-white/80 p-5 sm:p-6 shadow-[0_20px_60px_rgba(15,23,42,0.1)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
+                  <article className="flex flex-col h-full rounded-3xl sm:rounded-[28px] border border-[#0F172A]/10 bg-white/80 p-5 sm:p-6 shadow-[0_20px_60px_rgba(15,23,42,0.1)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
                     {/* Decorative light blob on hover */}
                     <div className="absolute -right-10 top-0 h-24 w-24 rounded-full bg-[#9AD5CA]/30 blur-2xl transition opacity-0 group-hover:opacity-100" />
                     <div className="relative z-10 flex flex-col h-full">
