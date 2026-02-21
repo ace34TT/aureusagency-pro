@@ -16,7 +16,7 @@ export const BlockWrapper: React.FC<BlockWrapperProps> = ({
   return (
     <section
       className={cn(
-        'py-16 md:py-24', // Default vertical padding for blocks
+        'py-8 md:py-24', // Default vertical padding for blocks
         className,
       )}
       data-block-type={blockType}
