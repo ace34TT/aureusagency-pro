@@ -16,7 +16,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 }) => {
   return (
     <section
-      className={`relative min-h-screen overflow-hidden px-6 pb-24 pt-28 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white`}
+      className={`relative min-h-screen overflow-hidden px-5 sm:px-6 lg:px-8 pb-20 sm:pb-24 lg:pb-28 pt-24 sm:pt-28 lg:pt-32 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white`}
     >
       <div
         className="absolute inset-0 z-0 pointer-events-none"
@@ -37,25 +37,25 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
       </div>
 
       <div className="relative mx-auto container z-40">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
+        <div className="grid items-center gap-10 md:gap-12 lg:gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="text-center lg:text-left">
             {badge && (
-              <div className="inline-flex items-center gap-3 rounded-full border border-[#0F172A]/15 px-4 py-2 text-xs uppercase tracking-[0.35em] text-[#0F172A]/70">
+              <div className="inline-flex items-center gap-3 rounded-full border border-[#0F172A]/15 px-4 py-2 text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] text-[#0F172A]/70">
                 <span className="h-2 w-2 rounded-full bg-[#0F172A]" />
                 {badge}
               </div>
             )}
 
-            <div className="mt-6 text-4xl font-(--font-marcellus) leading-tight text-[#0F172A] md:text-6xl">
+            <div className="mt-5 sm:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-(--font-marcellus) leading-tight text-[#0F172A]">
               {title && <RichText data={title} enableGutter={false} />}
             </div>
 
-            <div className={'mt-6 max-w-xl text-lg text-[#0F172A]/70 md:text-xl'}>
+            <div className="mt-5 sm:mt-6 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg md:text-xl text-[#0F172A]/70">
               {description && <RichText data={description} enableGutter={false} />}
             </div>
 
             {Array.isArray(links) && links.length > 0 && (
-              <div className="mt-8 flex flex-wrap items-center gap-8">
+              <div className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6">
                 {links.map(({ link }, i) => {
                   return (
                     <CMSLink
@@ -69,13 +69,13 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             )}
           </div>
 
-          <div className="relative">
+          <div className="relative flex items-center justify-center lg:justify-end">
             {media && typeof media === 'object' && (
               <div>
                 <Media
                   resource={media}
                   className="mx-auto"
-                  imgClassName="w-full h-auto max-w-[500px]"
+                  imgClassName="w-full h-auto max-w-[320px] sm:max-w-[380px] md:max-w-[440px] lg:max-w-[500px]"
                   priority
                 />
               </div>
@@ -84,7 +84,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
         </div>
 
         {Array.isArray(features) && features.length > 0 && (
-          <div className="mt-12 flex flex-wrap items-center gap-6 text-xs uppercase tracking-[0.3em] text-[#0F172A]/60">
+          <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#0F172A]/60">
             {features.map(({ text }, i) => (
               <span key={i}>{text}</span>
             ))}
