@@ -17,7 +17,7 @@ type WorkShowcaseProps = {
 
 const WorkShowcase = ({ tagline, richHeadline, richDescription, projects }: WorkShowcaseProps) => {
   return (
-    <BlockWrapper id="work" className="relative px-5 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <BlockWrapper id="work" className="">
       {/* Cercles en arrière-plan (Coherents avec le reste du site) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[10%] h-125 w-125 rounded-full bg-amber-50/40 blur-[120px]" />

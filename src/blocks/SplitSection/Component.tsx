@@ -16,7 +16,7 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
   title,
 }) => {
   return (
-    <BlockWrapper className="relative py-24 overflow-hidden">
+    <BlockWrapper className="relative py-8 sm:py-20 lg:py-24 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[10%] left-[10%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
@@ -24,17 +24,17 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
       </div>
 
       <Gutter>
-        <div className="mx-auto container relative z-10">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-14 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div className="mx-auto container relative z-10 px-5 sm:px-6 lg:px-0">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-10 lg:gap-x-14 gap-y-10 sm:gap-y-14 lg:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <div className={cn(reverse ? 'lg:order-last' : 'lg:order-first')}>
-              <div className="text-base leading-7 lg:max-w-lg">
-                <h2 className="mt-2 text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
+              <div className="text-base leading-7 lg:max-w-lg text-center lg:text-left">
+                <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
                   {title}
                 </h2>
-                <div className={`max-w-xl mt-6 text-lg ${theme.inkMuted}`}>
+                <div className={`max-w-xl mt-4 sm:mt-6 text-sm sm:text-base md:text-lg ${theme.inkMuted} mx-auto lg:mx-0`}>
                   {content && <RichText data={content} enableGutter={false} />}
                 </div>
-                <div className="mt-10 flex flex-wrap gap-4">
+                <div className="mt-6 sm:mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
                   {(links || []).map(({ link }, i) => {
                     return (
                       <CMSLink
@@ -54,7 +54,7 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
                 reverse ? 'lg:order-first' : 'lg:order-last',
               )}
             >
-              <div className="relative aspect-square md:aspect-4/3 lg:aspect-auto lg:h-150">
+              <div className="relative aspect-square sm:aspect-4/3 lg:aspect-auto lg:h-150">
                 {image && typeof image === 'object' && (
                   <MediaComponent
                     resource={image}
