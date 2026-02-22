@@ -59,7 +59,7 @@ export default async function Achievement({ params: paramsPromise }: Args) {
 
       <AchievementHero achievement={achievement} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
+      <div className="flex flex-col items-center gap-4">
         <div className="container mx-auto">
           <RenderBlocks blocks={achievement.layout} />
           {achievement.relatedAchievements && achievement.relatedAchievements.length > 0 && (

@@ -17,7 +17,7 @@ export const AchievementHero: React.FC<{
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
   return (
-    <div className="relative min-h-150 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white pt-28 pb-24">
+    <div className="px-5 sm:px-6 lg:px-8 relative min-h-150 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white pt-28 pb-24">
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
