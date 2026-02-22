@@ -19,13 +19,13 @@ export const AchievementOverviewBlock: React.FC<AchievementOverviewBlockProps> =
   ]
 
   return (
-    <BlockWrapper className="relative pt-0 md:pt-0 lg:pt-0">
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+    <BlockWrapper className="relative overflow-visible pt-0 md:pt-0 lg:pt-0">
+      <div className="absolute inset-0 pointer-events-none overflow-visible z-0">
         <div className="absolute -top-16 right-[10%] h-48 w-48 rounded-full bg-[#9AD5CA]/35 blur-[100px]" />
         <div className="absolute bottom-0 left-[5%] h-56 w-56 rounded-full bg-[#F6B3A7]/30 blur-[110px]" />
       </div>
 
-      <div className="">
+      <div className="relative z-10">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
           <div className="rounded-[28px] border border-[#0F172A]/10 bg-white/80 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm">
             <p className={`text-xs uppercase tracking-[0.35em] ${theme.inkSoft}`}>Client</p>
@@ -50,7 +50,7 @@ export const AchievementOverviewBlock: React.FC<AchievementOverviewBlockProps> =
             {details.map((detail) => (
               <div
                 key={detail.label}
-                className="group rounded-[22px] border border-[#0F172A]/10 bg-white/70 p-6 transition-all hover:-translate-y-1 hover:border-[#0F172A]/20 shadow-[0_16px_40px_rgba(15,23,42,0.06)]"
+                className="rounded-[22px] border border-[#0F172A]/10 bg-white/70 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.06)]"
               >
                 <p className={`text-[0.65rem] uppercase tracking-[0.35em] ${theme.inkSoft}`}>
                   {detail.label}
