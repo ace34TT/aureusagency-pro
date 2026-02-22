@@ -57,7 +57,7 @@ export const AchievementList = async (
   })
 
   return (
-    <BlockWrapper className="relative px-5 sm:px-6 lg:px-8 pb-8 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
+    <BlockWrapper className="pt-0 md:pt-0 lg:pt-0 bg-white">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />

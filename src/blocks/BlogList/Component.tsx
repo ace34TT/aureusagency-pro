@@ -59,8 +59,8 @@ export const BlogList = async (
   return (
     <BlockWrapper
       className={`relative px-5 sm:px-6 lg:px-8 ${
-        mode === 'all' ? 'pt-0 pb-16 sm:pb-20 lg:pb-24' : ''
-      } overflow-hidden`}
+        mode === 'all' ? ' pt-0 md:pt-0 lg:pt-0 pb-16 sm:pb-20 lg:pb-24' : ''
+      }`}
     >
       {/* Background Decor matching WorkShowcase */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
