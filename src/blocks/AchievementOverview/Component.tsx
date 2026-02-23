@@ -19,7 +19,7 @@ export const AchievementOverviewBlock: React.FC<AchievementOverviewBlockProps> =
   ]
 
   return (
-    <BlockWrapper className="relative overflow-visible pt-0 md:pt-0 lg:pt-0">
+    <BlockWrapper className="">
       <div className="absolute inset-0 pointer-events-none overflow-visible z-0">
         <div className="absolute -top-16 right-[10%] h-48 w-48 rounded-full bg-[#9AD5CA]/35 blur-[100px]" />
         <div className="absolute bottom-0 left-[5%] h-56 w-56 rounded-full bg-[#F6B3A7]/30 blur-[110px]" />
