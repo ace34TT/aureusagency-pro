@@ -17,7 +17,7 @@ export const PostHero: React.FC<{
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
   return (
-    <div className="relative min-h-112 sm:min-h-128 lg:min-h-160 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20 lg:pb-24">
+    <div className="relative min-h-96 sm:min-h-128 lg:min-h-160 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white pt-20 sm:pt-24 lg:pt-28 pb-0 sm:pb-20 lg:pb-24">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="relative h-full w-full">
           {/* Vos cercles ici */}
@@ -28,7 +28,7 @@ export const PostHero: React.FC<{
         </div>
       </div>
       {/* Content Card */}
-      <div className="container relative z-10 flex justify-center rounded-2xl overflow-hidden px-2 sm:px-3">
+      <div className="container relative z-10 flex justify-center rounded-2xl overflow-hidden px-2 sm:px-3 mx-2">
         {heroImage && typeof heroImage !== 'string' && (
           <Media
             fill
@@ -40,13 +40,23 @@ export const PostHero: React.FC<{
         )}
         <div className="absolute inset-0 bg-black/30 backdrop-blur-md" />
         <div className="relative z-10 backdrop-blur-xs shadow-2xl rounded-3xl p-6 sm:p-8 md:p-12 w-full  mx-auto">
-          <Link
-            href="/posts"
-            className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-primary transition-colors mb-6 sm:mb-8"
-            title="Retour aux articles"
-          >
-            <MdArrowBackIos className={'-mr-1.5'} />
-          </Link>
+          <div className="mb-6 sm:mb-8 flex items-center justify-between">
+            <Link
+              href="/posts"
+              className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-primary transition-colors"
+              title="Retour aux articles"
+            >
+              <MdArrowBackIos className={'-mr-1.5'} />
+            </Link>
+            {publishedAt && (
+              <div className="flex items-center gap-2 text-white/80 sm:hidden">
+                <Calendar size={16} className="text-primary" strokeWidth={2} />
+                <time dateTime={publishedAt} className="text-xs font-medium">
+                  {formatDateTime(publishedAt)}
+                </time>
+              </div>
+            )}
+          </div>
 
           <div className="uppercase text-xs sm:text-sm mb-3 sm:mb-4 text-primary font-bold tracking-wider">
             {categories?.map((category, index) => {
@@ -82,7 +92,7 @@ export const PostHero: React.FC<{
               </div>
             )}
             {publishedAt && (
-              <div className="flex items-center gap-2">
+              <div className="hidden sm:flex items-center gap-2">
                 <Calendar size={18} className="text-primary" strokeWidth={2} />
                 <time dateTime={publishedAt} className="text-white font-medium">
                   {formatDateTime(publishedAt)}

@@ -16,7 +16,7 @@ export const BlockWrapper: React.FC<BlockWrapperProps> = ({
   return (
     <section
       className={cn(
-        'py-8 md:py-24 relative sm:py-20 lg:py-24',
+        'px-2 py-8 md:py-24 relative sm:py-20 lg:py-24',
         className,
       )}
       data-block-type={blockType}
