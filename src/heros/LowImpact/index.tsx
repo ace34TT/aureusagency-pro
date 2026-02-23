@@ -16,9 +16,9 @@ type LowImpactHeroType =
 
 export const LowImpactHero: React.FC<LowImpactHeroType> = ({ children, richText }) => {
   return (
-    <section className="relative min-h-75 px-5 sm:px-6 lg:px-8 pt-10 sm:pt-12 lg:pt-14 pb-8 sm:pb-10 overflow-hidden flex items-end justify-center bg-linear-to-b from-[#f9f2ff] to-white">
+    <section className="relative min-h-75 px-5 sm:px-6 lg:px-8 pt-34 py-24  flex items-end justify-center bg-linear-to-b from-[#f9f2ff] to-white">
       {/* Background Orbs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-0 pointer-events-none  z-0">
         <div className="absolute top-[10%] -left-[5%] h-125 w-125 rounded-full bg-purple-50/50 blur-[120px]" />
         <div className="absolute bottom-[10%] -right-[5%] h-125 w-125 rounded-full bg-blue-50/40 blur-[120px]" />
       </div>
