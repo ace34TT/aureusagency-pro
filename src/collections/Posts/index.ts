@@ -6,7 +6,7 @@ import { Banner } from '@/blocks/Banner/config'
 import { Code } from '@/blocks/Code/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { MarqueeBlock } from '@/blocks/Marquee/config'
-// import { RichText } from '@/blocks/RichText/config'
+import { Content } from '@/blocks/Content/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { Quote } from '@/blocks/Quote/config'
@@ -90,6 +90,7 @@ export const Posts: CollectionConfig<'posts'> = {
                 Alert,
                 AuthorSection,
                 CallToAction,
+                Content,
               ],
               required: true,
             },

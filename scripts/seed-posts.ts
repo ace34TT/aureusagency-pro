@@ -64,7 +64,7 @@ async function seedPosts() {
 
   console.log('--- Creating New Posts ---')
   for (let i = 1; i <= 10; i++) {
-    const layout = [
+    const layout: any[] = [
       {
         blockType: 'quote',
         quote: dummyRichText,
@@ -96,7 +96,7 @@ async function seedPosts() {
         collection: 'posts',
         data: {
           title: `Sample Seeded Post ${i}`,
-          layout,
+          layout: layout as any,
           meta: {
             title: `Sample Seeded Post ${i}`,
             description: 'This is an auto-generated post description for testing.',
@@ -104,7 +104,7 @@ async function seedPosts() {
           _status: 'published',
         },
         context: { disableRevalidate: true },
-      })
+      } as any)
       console.log(`✅ Created Post: Sample Seeded Post ${i}`)
     } catch (e) {
       console.error(`❌ Failed to create Post ${i}:`, e)
