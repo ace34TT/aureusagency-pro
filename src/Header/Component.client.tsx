@@ -232,7 +232,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     <>
       <nav
         className={cn(
-          'max-w-screen overflow-x-hidden h-20 md:h-20 lg:h-24 flex items-center fixed top-0 left-0 right-0 z-999 transition-all duration-300 ease-in-out font-[Roboto]',
+          'w-full overflow-hidden h-20 md:h-20 lg:h-24 flex items-center fixed top-0 left-0 right-0 z-999 transition-all duration-300 ease-in-out font-[Roboto]',
           isScrolled ? 'bg-[#13233C80] border-white backdrop-blur-md' : '',
         )}
       >

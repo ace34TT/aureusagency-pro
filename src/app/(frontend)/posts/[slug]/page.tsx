@@ -53,7 +53,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <article className="max-w-screen overflow-x-hidden">
+    <article className="w-full overflow-hidden">
       <PageClient />
 
       {/* Allows redirects for valid pages too */}

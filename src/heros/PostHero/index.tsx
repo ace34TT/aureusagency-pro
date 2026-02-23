@@ -17,7 +17,7 @@ export const PostHero: React.FC<{
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
   return (
-    <div className="relative min-h-96 sm:min-h-128 lg:min-h-160 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white pt-20 sm:pt-24 lg:pt-28 pb-0 sm:pb-20 lg:pb-24">
+    <div className="relative min-h-96 sm:min-h-128 lg:min-h-160 flex items-center justify-center bg-linear-to-b from-[#f9f2ff] to-white pt-20 sm:pt-24 lg:pt-28 pb-0 sm:pb-20 lg:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="relative h-full w-full">
           {/* Vos cercles ici */}

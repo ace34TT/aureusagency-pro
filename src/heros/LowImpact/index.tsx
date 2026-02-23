@@ -16,11 +16,11 @@ type LowImpactHeroType =
 
 export const LowImpactHero: React.FC<LowImpactHeroType> = ({ children, richText }) => {
   return (
-    <section className="relative min-h-56 md:min-h-75 px-5 sm:px-6 lg:px-8 md:pt-34 pt-0 py-0 md:py-24 flex items-end justify-center bg-linear-to-b from-[#f9f2ff] to-white">
+    <section className="relative min-h-56 md:min-h-75 px-5 sm:px-6 lg:px-8 md:pt-34 pt-0 py-0 md:py-24 flex items-end justify-center bg-linear-to-b from-[#f9f2ff] to-white overflow-hidden">
       {/* Background Orbs */}
-      <div className="absolute inset-0 pointer-events-none  z-0">
-        <div className="absolute top-[10%] -left-[5%] h-125 w-125 rounded-full bg-purple-50/50 blur-[120px]" />
-        <div className="absolute bottom-[10%] -right-[5%] h-125 w-125 rounded-full bg-blue-50/40 blur-[120px]" />
+      <div className="absolute inset-x-0 inset-y-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[10%] -left-[5%] h-64 w-64 sm:h-125 sm:w-125 rounded-full bg-purple-50/50 blur-[80px] sm:blur-[120px]" />
+        <div className="absolute bottom-[10%] -right-[5%] h-64 w-64 sm:h-125 sm:w-125 rounded-full bg-blue-50/40 blur-[80px] sm:blur-[120px]" />
       </div>
 
       <div className="relative mx-auto container z-10 text-center">

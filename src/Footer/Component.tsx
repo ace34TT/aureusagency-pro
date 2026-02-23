@@ -174,7 +174,7 @@ export async function Footer() {
     })
 
   return (
-    <footer className="max-w-screen overflow-x-hidden relative bg-white text-[#0F172A] py-8 sm:py-16 px-5 sm:px-6 lg:px-8 overflow-hidden">
+    <footer className="w-full relative bg-white text-[#0F172A] py-8 sm:py-16 px-5 sm:px-6 lg:px-8 overflow-hidden">
       {/* Cercles en arrière-plan (Plus subtils pour le thème clair) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[30%] -left-[10%] h-125 w-125 rounded-full bg-purple-100/50 blur-[100px]" />
