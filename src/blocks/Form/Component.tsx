@@ -14,6 +14,7 @@ import type { Global } from '@/payload-types'
 import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link'
 import { BlockWrapper } from '@/components/BlockWrapper'
+import Image from 'next/image'
 
 export type FormBlockType = {
   blockName?: string
@@ -145,7 +146,26 @@ export const FormBlock: React.FC<
               </h2>
               <FormProvider {...formMethods}>
                 {!isLoading && hasSubmitted && confirmationType === 'message' && (
-                  <RichText data={confirmationMessage} />
+                  <div className="p-6 sm:p-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:text-left">
+                    <div className="relative h-32 w-40 shrink-0 sm:h-36 sm:w-48">
+                      <Image
+                        src="/undraw_delivery-address_409g.png"
+                        alt="Confirmation"
+                        fill
+                        sizes="(max-width: 640px) 160px, 192px"
+                        className="object-contain"
+                        priority
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] text-[#0F172A]/50">
+                        Message envoyé
+                      </p>
+                      <div className="mt-3 text-base text-slate-700">
+                        <RichText data={confirmationMessage} enableGutter={false} />
+                      </div>
+                    </div>
+                  </div>
                 )}
                 {isLoading && !hasSubmitted && <p>Chargement, veuillez patienter...</p>}
                 {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
