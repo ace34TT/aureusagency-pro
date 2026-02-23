@@ -19,21 +19,25 @@ const WorkShowcase = ({ tagline, richHeadline, richDescription, projects }: Work
   return (
     <BlockWrapper id="work" className="">
       {/* Cercles en arrière-plan (Coherents avec le reste du site) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[20%] right-[10%] h-125 w-125 rounded-full bg-amber-50/40 blur-[120px]" />
+      <div className="absolute inset-x-0 inset-y-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[20%] right-[-10%] sm:right-[10%] h-64 w-64 sm:h-125 sm:w-125 rounded-full bg-amber-50/40 blur-[80px] sm:blur-[120px]" />
       </div>
 
       <div className="relative mx-auto container z-10">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="text-center md:text-left">
-            <p className={`text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] ${theme.inkSoft}`}>
+            <p
+              className={`text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] ${theme.inkSoft}`}
+            >
               {tagline || 'Etudes rapides'}
             </p>
             <div className="mt-4 text-2xl sm:text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
               {richHeadline && <RichText data={richHeadline} enableGutter={false} />}
             </div>
           </div>
-          <div className={`max-w-md text-sm sm:text-base ${theme.inkMuted} text-center md:text-left`}>
+          <div
+            className={`max-w-md text-sm sm:text-base ${theme.inkMuted} text-center md:text-left`}
+          >
             {richDescription && <RichText data={richDescription} enableGutter={false} />}
           </div>
         </div>

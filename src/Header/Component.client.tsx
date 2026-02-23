@@ -9,7 +9,6 @@ import type { Header } from '@/payload-types'
 
 import { cn } from '@/utilities/ui'
 import { createPortal } from 'react-dom'
-import { Button } from '@payloadcms/ui'
 import { RiCloseLargeLine } from 'react-icons/ri'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { CMSLink } from '@/components/Link'
@@ -53,7 +52,7 @@ const MobileMenu: FC<{
         className={cn(
           'fixed inset-y-0 right-0 z-9999 lg:hidden',
           'transition-all duration-300 ease-in-out',
-          'w-80 border-l border-[#0F172A]/10 bg-[#F5F2EB] shadow-[0_30px_80px_rgba(15,23,42,0.18)]',
+          'w-full sm:w-96 border-l border-[#0F172A]/10 bg-[#F5F2EB] text-[#0F172A] shadow-[0_30px_80px_rgba(15,23,42,0.18)]',
           isOpen ? 'translate-x-0' : 'translate-x-full',
         )}
       >
@@ -82,7 +81,7 @@ const MobileMenu: FC<{
 
           {/* Mobile Navigation Items */}
           <div className="grow overflow-y-auto">
-            <ul className="flex flex-col ">
+            <ul className="flex flex-col">
               {menus.map(({ link }) => {
                 const href =
                   link.type === 'reference'
@@ -101,7 +100,7 @@ const MobileMenu: FC<{
                       className={cn(
                         'block px-6 py-4 text-base font-medium transition-colors duration-300',
                         isActive
-                          ? 'font-bold text-[#F5F2EB] bg-[#0F172A]'
+                          ? 'font-bold text-[#0F172A] bg-[#0F172A]/5'
                           : 'text-[#0F172A]/70 hover:text-[#0F172A]',
                       )}
                       onClick={onClose}
@@ -116,16 +115,13 @@ const MobileMenu: FC<{
           <div className="p-6 border-t border-[#0F172A]/10">
             <div className="space-y-3">
               {buttons?.map((button) => (
-                <Button
-                  key={button.link.url ?? button.link.label}
-                  el="link"
-                  url={button.link.url ?? '#'}
-                  newTab={button.link.newTab ?? undefined}
-                  onClick={onClose}
-                  className="w-full"
-                >
-                  {button.link.label}
-                </Button>
+                <div key={button.link.url ?? button.link.label} onClick={onClose}>
+                  <CMSLink
+                    {...button.link}
+                    appearance={button.link.appearance || 'default'}
+                    className="w-full justify-center"
+                  />
+                </div>
               ))}
             </div>
           </div>

@@ -58,14 +58,14 @@ export const BlogList = async (
 
   return (
     <BlockWrapper
-      className={`relative px-5 sm:px-6 lg:px-8 ${
+      className={`relative px-5 sm:px-6 lg:px-8 overflow-hidden ${
         mode === 'all' ? 'pt-0 md:pt-0 lg:pt-12 pb-16 sm:pb-20 lg:pb-24' : ''
       }`}
     >
       {/* Background Decor matching WorkShowcase */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[20%] right-[5%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
-        <div className="absolute bottom-[20%] left-[5%] h-125 w-125 rounded-full bg-blue-50/40 blur-[120px]" />
+      <div className="absolute inset-x-0 inset-y-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[20%] right-[-10%] sm:right-[5%] h-64 w-64 sm:h-125 sm:w-125 rounded-full bg-purple-50/40 blur-[80px] sm:blur-[120px]" />
+        <div className="absolute bottom-[20%] left-[-10%] sm:left-[5%] h-64 w-64 sm:h-125 sm:w-125 rounded-full bg-blue-50/40 blur-[80px] sm:blur-[120px]" />
       </div>
 
       <div className="relative mx-auto container z-10">

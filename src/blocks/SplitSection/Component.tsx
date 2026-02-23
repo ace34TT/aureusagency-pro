@@ -18,9 +18,9 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
   return (
     <BlockWrapper className="relative py-8 sm:py-20 lg:py-24 overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[10%] left-[10%] h-125 w-125 rounded-full bg-purple-50/40 blur-[120px]" />
-        <div className="absolute bottom-[10%] right-[10%] h-125 w-125 rounded-full bg-blue-50/40 blur-[120px]" />
+      <div className="absolute inset-x-0 inset-y-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[10%] left-[-10%] sm:left-[10%] h-64 w-64 sm:h-125 sm:w-125 rounded-full bg-purple-50/40 blur-[80px] sm:blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[-10%] sm:right-[10%] h-64 w-64 sm:h-125 sm:w-125 rounded-full bg-blue-50/40 blur-[80px] sm:blur-[120px]" />
       </div>
 
       <Gutter>
@@ -31,7 +31,9 @@ export const SplitSection: React.FC<SplitSectionBlockProps> = ({
                 <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-(--font-marcellus) text-[#0F172A] leading-tight">
                   {title}
                 </h2>
-                <div className={`max-w-xl mt-4 sm:mt-6 text-sm sm:text-base md:text-lg ${theme.inkMuted} mx-auto lg:mx-0`}>
+                <div
+                  className={`max-w-xl mt-4 sm:mt-6 text-sm sm:text-base md:text-lg ${theme.inkMuted} mx-auto lg:mx-0`}
+                >
                   {content && <RichText data={content} enableGutter={false} />}
                 </div>
                 <div className="mt-6 sm:mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
