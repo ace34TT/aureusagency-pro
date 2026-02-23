@@ -683,64 +683,119 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
-  columns?:
-    | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
+  layout?: ('oneColumn' | 'twoColumns') | null;
+  columnOne?: {
+    type?: ('text' | 'image') | null;
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
           [k: string]: unknown;
-        } | null;
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-          enableIcon?: boolean | null;
-          icon?:
-            | (
-                | 'arrowRight'
-                | 'arrowLeft'
-                | 'chevronRight'
-                | 'chevronLeft'
-                | 'plus'
-                | 'externalLink'
-                | 'download'
-                | 'play'
-                | 'info'
-                | 'phone'
-                | 'calendar'
-              )
-            | null;
-          iconPosition?: ('left' | 'right') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    image?: (string | null) | Media;
+    enableLink?: boolean | null;
+    link?: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline') | null;
+      enableIcon?: boolean | null;
+      icon?:
+        | (
+            | 'arrowRight'
+            | 'arrowLeft'
+            | 'chevronRight'
+            | 'chevronLeft'
+            | 'plus'
+            | 'externalLink'
+            | 'download'
+            | 'play'
+            | 'info'
+            | 'phone'
+            | 'calendar'
+          )
+        | null;
+      iconPosition?: ('left' | 'right') | null;
+    };
+  };
+  columnTwo?: {
+    type?: ('text' | 'image') | null;
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    image?: (string | null) | Media;
+    enableLink?: boolean | null;
+    link?: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline') | null;
+      enableIcon?: boolean | null;
+      icon?:
+        | (
+            | 'arrowRight'
+            | 'arrowLeft'
+            | 'chevronRight'
+            | 'chevronLeft'
+            | 'plus'
+            | 'externalLink'
+            | 'download'
+            | 'play'
+            | 'info'
+            | 'phone'
+            | 'calendar'
+          )
+        | null;
+      iconPosition?: ('left' | 'right') | null;
+    };
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
@@ -1872,11 +1927,13 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
-  columns?:
+  layout?: T;
+  columnOne?:
     | T
     | {
-        size?: T;
+        type?: T;
         richText?: T;
+        image?: T;
         enableLink?: T;
         link?:
           | T
@@ -1891,7 +1948,27 @@ export interface ContentBlockSelect<T extends boolean = true> {
               icon?: T;
               iconPosition?: T;
             };
-        id?: T;
+      };
+  columnTwo?:
+    | T
+    | {
+        type?: T;
+        richText?: T;
+        image?: T;
+        enableLink?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+              enableIcon?: T;
+              icon?: T;
+              iconPosition?: T;
+            };
       };
   id?: T;
   blockName?: T;

@@ -123,8 +123,11 @@ export const BlogList = async (
         <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.docs.length > 0 ? (
             posts.docs.map((post) => {
-              const { slug, title, meta, publishedAt, tags } = post
+              const { slug, title, meta, publishedAt, tags, heroImage } = post
               const href = `/posts/${slug}`
+
+              const imageToUse = meta?.image || heroImage
+
               return (
                 <Link href={href} key={post.id} className="group block h-full">
                   <article className="flex flex-col h-full rounded-3xl sm:rounded-[28px] border border-[#0F172A]/10 bg-white/80 p-5 sm:p-6 shadow-[0_20px_60px_rgba(15,23,42,0.1)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden">
@@ -133,9 +136,9 @@ export const BlogList = async (
                     <div className="relative z-10 flex flex-col h-full">
                       {/* Image */}
                       <div className="relative aspect-16/10 overflow-hidden rounded-xl bg-slate-100 mb-4 sm:mb-6">
-                        {meta?.image && typeof meta.image !== 'string' && (
+                        {imageToUse && typeof imageToUse !== 'string' && (
                           <Media
-                            resource={meta.image}
+                            resource={imageToUse}
                             imgClassName="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             pictureClassName="w-full h-full block"
                             htmlElement={null}

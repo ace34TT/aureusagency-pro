@@ -27,7 +27,7 @@ export const TableOfContents: React.FC = () => {
   if (headings.length === 0) return null
 
   return (
-    <div className="sticky top-24 pt-8 border-l border-primary/20 pl-6 lg:block hidden">
+    <div className="sticky top-24 border-l border-primary/20 pl-6 lg:block hidden">
       <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-4">
         Sommaire
       </h3>

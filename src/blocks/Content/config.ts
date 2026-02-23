@@ -11,25 +11,17 @@ import { link } from '@/fields/link'
 
 const columnFields: Field[] = [
   {
-    name: 'size',
+    name: 'type',
     type: 'select',
-    defaultValue: 'oneThird',
+    defaultValue: 'text',
     options: [
       {
-        label: 'One Third',
-        value: 'oneThird',
+        label: 'Text',
+        value: 'text',
       },
       {
-        label: 'Half',
-        value: 'half',
-      },
-      {
-        label: 'Two Thirds',
-        value: 'twoThirds',
-      },
-      {
-        label: 'Full',
-        value: 'full',
+        label: 'Image',
+        value: 'image',
       },
     ],
   },
@@ -47,16 +39,30 @@ const columnFields: Field[] = [
       },
     }),
     label: false,
+    admin: {
+      condition: (_, siblingData) => siblingData.type === 'text',
+    },
+  },
+  {
+    name: 'image',
+    type: 'upload',
+    relationTo: 'media',
+    admin: {
+      condition: (_, siblingData) => siblingData.type === 'image',
+    },
   },
   {
     name: 'enableLink',
     type: 'checkbox',
+    admin: {
+      condition: (_, siblingData) => siblingData.type === 'text',
+    },
   },
   link({
     overrides: {
       admin: {
         condition: (_data, siblingData) => {
-          return Boolean(siblingData?.enableLink)
+          return Boolean(siblingData?.enableLink) && siblingData.type === 'text'
         },
       },
     },
@@ -68,10 +74,24 @@ export const Content: Block = {
   interfaceName: 'ContentBlock',
   fields: [
     {
-      name: 'columns',
-      type: 'array',
+      name: 'layout',
+      type: 'select',
+      defaultValue: 'oneColumn',
+      options: [
+        { label: 'One Column', value: 'oneColumn' },
+        { label: 'Two Columns', value: 'twoColumns' },
+      ],
+    },
+    {
+      name: 'columnOne',
+      type: 'group',
+      fields: columnFields,
+    },
+    {
+      name: 'columnTwo',
+      type: 'group',
       admin: {
-        initCollapsed: true,
+        condition: (_, siblingData) => siblingData.layout === 'twoColumns',
       },
       fields: columnFields,
     },
