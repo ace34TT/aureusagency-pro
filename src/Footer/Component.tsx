@@ -200,9 +200,9 @@ export async function Footer() {
                 Une agence dédiée à l&apos;excellence digitale et à la performance mesurable.
               </div>
               <div>
-                <h4 className="font-(--font-marcellus) text-base sm:text-lg mb-3 text-[#0F172A]">
+                <p className="font-(--font-marcellus) text-base sm:text-lg mb-3 text-[#0F172A]">
                   Restez informé
-                </h4>
+                </p>
                 <NewsletterForm />
               </div>
             </div>
@@ -210,17 +210,17 @@ export async function Footer() {
 
           <div className="grid grid-cols-2 sm:grid-cols-2 gap-8 sm:gap-12">
             <div>
-              <h3 className="font-(--font-marcellus) text-base sm:text-lg mb-3 sm:mb-4 text-[#0F172A] uppercase tracking-wider">
+              <span className="font-(--font-marcellus) text-base sm:text-lg mb-3 sm:mb-4 text-[#0F172A] uppercase tracking-wider">
                 Menu
-              </h3>
+              </span>
               <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-slate-600 font-medium">
                 {renderLinks(navItems || [])}
               </ul>
             </div>
             <div>
-              <h3 className="font-(--font-marcellus) text-base sm:text-lg mb-3 sm:mb-4 text-[#0F172A] uppercase tracking-wider">
+              <span className="font-(--font-marcellus) text-base sm:text-lg mb-3 sm:mb-4 text-[#0F172A] uppercase tracking-wider">
                 Légal
-              </h3>
+              </span>
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-slate-500">
                 {renderLinks(legalLinks || [])}
               </ul>
