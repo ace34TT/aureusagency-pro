@@ -14,6 +14,7 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
 
 import './globals.css'
 import '@/styles/typography.css'
@@ -71,6 +72,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Header />
           {children}
           <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
