@@ -25,6 +25,7 @@
     "@next/third-parties": "^16.1.6",
     "@payloadcms/admin-bar": "3.75.0",
     "@payloadcms/db-mongodb": "3.75.0",
+    "@payloadcms/email-nodemailer": "^3.75.0",
     "@payloadcms/live-preview-react": "3.75.0",
     "@payloadcms/next": "3.75.0",
     "@payloadcms/plugin-form-builder": "3.75.0",
